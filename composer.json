@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "overtrue/laravel-skeleton",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Laravel Application skeleton for overtrue.",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "skeleton"
     ],
     "license": "MIT",
     "require": {
