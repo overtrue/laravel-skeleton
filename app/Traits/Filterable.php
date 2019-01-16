@@ -4,8 +4,6 @@ namespace App\Traits;
 
 /**
  * Trait Filterable.
- *
- * @author artisan <artisan@tencent.com>
  */
 trait Filterable
 {
@@ -39,7 +37,7 @@ trait Filterable
      */
     public function isFilterable(string $key)
     {
-        return \defined('static::FILTERABLE') && \in_array($key, \constant('static::FILTERABLE'));
+        return \property_exists($this, 'filterable') && \in_array($key, $this->filterable);
     }
 
     /**
