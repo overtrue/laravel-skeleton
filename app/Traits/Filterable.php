@@ -19,7 +19,7 @@ trait Filterable
             $method = 'filter'.\studly_case($key);
 
             if (\method_exists($this, $method)) {
-                \call_user_func([$this, $method], $value, $query, $key);
+                \call_user_func([$this, $method], $query, $value, $key);
             } elseif ($this->isFilterable($key)) {
                 if (\is_array($value)) {
                     $query->whereIn($key, $value);
