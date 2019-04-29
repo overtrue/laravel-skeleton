@@ -1,0 +1,96 @@
+.bd-sidebar {
+  transition: all .3s ease-in-out;
+
+  .logo {
+    text-align: center;
+    white-space: nowrap;
+    line-height: 2.25rem;
+    text-decoration: none;
+
+    i {
+      font-size: 3em;
+    }
+  }
+
+  .sidebar-menu, .sidebar-menu ul {
+    i {
+      display: inline-block;
+      width: 24px;
+      min-width: 24px;
+      margin: 0 18px;
+      font-size: 20px;
+      text-align: center;
+      vertical-align: sub;
+      transition: transform 0.3s, opacity 0.3s;
+
+      &.icon-arrow {
+        position: absolute;
+        right: 0;
+        text-align: right;
+      }
+    }
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      overflow: hidden;
+
+      &.nav-tag div {
+        margin-top: 1em;
+        color: $gray-600;
+        text-transform: uppercase;
+        font-size: 0.8em;
+      }
+
+      > div, a {
+        position: relative;
+        display: flex;
+        white-space: nowrap;
+        color: $gray-500;
+        padding: .8em 0;
+        min-width: 240px;
+        text-decoration: none;
+
+        &.router-link-active {
+          box-shadow: inset 3px 0 #597191;
+          color: $white;
+          background: lighten($dark, 2%);
+        }
+      }
+
+      &:not(.nav-tag) a:hover {
+        background: lighten($dark, 2%);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .sidebar-menu {
+    > li > ul {
+      max-height: 0;
+      > li > a {
+        padding-left: 59px;
+      }
+    }
+
+    &.active {
+      ul {
+        max-height: 999px;
+      }
+    }
+  }
+}
+
+.collapsed .bd-sidebar {
+  width: 60px;
+
+  .icon-arrow {
+    opacity: 0;
+  }
+
+  .logo .nav-label {
+    opacity: 0;
+  }
+}

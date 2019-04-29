@@ -1,0 +1,22 @@
+
+// Extra large devices
+.bd-sidebar, .navbar-brand {
+  max-width: $sidebar-max-width;
+}
+
+
+h1, h2, h3, h4, h5, h6 { margin-top: 0 }
+
+.el-button.only-icon {
+  &.el-button--default {
+    padding: 10px;
+  }
+
+  &.el-button--mini {
+    padding: 6px;
+  }
+}
+
+.el-button + .el-button.el-button--mini {
+  margin-left: 2px;
+}

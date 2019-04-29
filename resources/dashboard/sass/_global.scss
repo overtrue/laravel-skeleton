@@ -1,0 +1,19 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #F6F8FC;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+ul { list-style: none; padding: 0;}
+
+.avatar {
+  border-radius: 100%;
+  vertical-align: middle;
+}

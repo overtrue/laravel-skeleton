@@ -13,3 +13,11 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/dashboard/js/app.js', 'public/js/dashboard.js')
+    .sass('resources/dashboard/sass/app.scss', 'public/css/dashboard.css')
+    .extract()
+
+if (mix.inProduction()) {
+    mix.version()
+}

@@ -1,0 +1,27 @@
+.btn {
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.25em;
+
+  &:hover {
+    text-decoration: none;
+    background-repeat: repeat-x;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:disabled,
+  &.disabled {
+    cursor: default;
+    // Repeat `background-position` because `:hover`
+    background-position: 0 0;
+  }
+
+  &:active,
+  &.selected {
+    background-image: none;
+  }
+}
