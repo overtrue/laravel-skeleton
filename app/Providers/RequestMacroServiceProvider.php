@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use App\Company;
-use App\Traits\Commentable;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 
