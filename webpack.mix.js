@@ -1,4 +1,18 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix')
+const tailwindcss = require('tailwindcss')
+const purgecss = require('@fullhuman/postcss-purgecss')({
+
+  // Specify the paths to all of the template files in your project
+  content: [
+    './resources/**/*.html',
+    './resources/**/*.vue',
+    './resources/**/*.jsx',
+    // etc.
+  ],
+
+  // Include any special characters you're using in this regular expression
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+})
 
 /*
  |--------------------------------------------------------------------------
@@ -12,12 +26,19 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
-
-mix.js('resources/dashboard/js/app.js', 'public/js/dashboard.js')
-    .sass('resources/dashboard/sass/app.scss', 'public/css/dashboard.css')
-    .extract()
+  .sass('resources/sass/app.scss', 'public/css')
+  .options({
+    processCssUrls: true,
+    extractVueStyles: true,
+    postCss: [
+      tailwindcss('./tailwind.config.js') ,
+      ...process.env.NODE_ENV === 'production'
+        ? [purgecss]
+        : []
+    ],
+  })
+  .extract()
 
 if (mix.inProduction()) {
-    mix.version()
+  mix.version()
 }

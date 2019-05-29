@@ -1,8 +1,19 @@
-
-// Fonts
+// Variables
 @import 'variables';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+// Components
+@import "common";
+@import "override";
+@import "components";
+
+// Vendors
+$mdi-font-path: '~@mdi/font/fonts/';
+@import "~@mdi/font/scss/materialdesignicons";
+
+@import "~normalize.css/normalize.css";
