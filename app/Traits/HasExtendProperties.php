@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Fluent;
+
 /**
  * Trait HasExtendProperties.
  *
@@ -12,12 +14,12 @@ namespace App\Traits;
 trait HasExtendProperties
 {
     /**
-     * @return array
+     * @return \Illuminate\Support\Fluent
      */
     public function getPropertiesAttribute()
     {
         $default = \defined('static::DEFAULT_PROPERTIES') ? \constant('static::DEFAULT_PROPERTIES') : [];
 
-        return \array_merge($default, $this->attributes['properties'] ?? []);
+        return new Fluent(\array_merge($default, \json_decode($this->attributes['properties'] ?? '{}', true) ?? []));
     }
 }
