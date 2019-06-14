@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import Loading from './Loading'
-
 // Load layout components dynamically.
 const requireContext = require.context('~/layouts', false, /.*\.vue$/)
 
@@ -29,12 +27,6 @@ const layouts = requireContext
   }, {})
 
 export default {
-  el: '#app',
-
-  components: {
-    Loading
-  },
-
   data: () => ({
     layout: null,
     defaultLayout: 'default'

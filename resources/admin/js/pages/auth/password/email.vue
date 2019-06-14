@@ -2,26 +2,38 @@
   <div class="row">
     <div class="col-lg-8 m-auto">
       <card :title="$t('reset_password')">
-        <form @submit.prevent="send" @keydown="form.onKeydown($event)">
-          <alert-success :form="form" :message="status" />
+        <form
+          @keydown="form.onKeydown($event)"
+          @submit.prevent="send"
+        >
+          <alert-success
+            :form="form"
+            :message="status"
+          />
 
           <!-- Email -->
-          <div class="form-group row">
+          <div class="mb-6">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
-              <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
-              <has-error :form="form" field="email" />
+              <input
+                :class="{ 'is-invalid': form.errors.has('email') }"
+                class="form-input my-2 w-full"
+                name="email"
+                type="email"
+                v-model="form.email"
+              >
+              <has-error
+                :form="form"
+                field="email"
+              />
             </div>
           </div>
 
           <!-- Submit Button -->
-          <div class="form-group row">
-            <div class="col-md-9 ml-md-auto">
-              <v-button :loading="form.busy">
-                {{ $t('send_password_reset_link') }}
-              </v-button>
-            </div>
-          </div>
+          <el-button
+            :loading="form.busy"
+            class="w-full"
+          >{{ $t('send_password_reset_link') }}</el-button>
         </form>
       </card>
     </div>
@@ -34,7 +46,9 @@ import Form from 'vform'
 export default {
   middleware: 'guest',
 
-  metaInfo () {
+  layout: 'auth',
+
+  metaInfo() {
     return { title: this.$t('reset_password') }
   },
 
@@ -46,7 +60,7 @@ export default {
   }),
 
   methods: {
-    async send () {
+    async send() {
       const { data } = await this.form.post('/api/password/email')
 
       this.status = data.status

@@ -1,72 +1,61 @@
 <template>
-  <div class="row">
-    <div class="col-lg-8 m-auto">
-      <card :title="$t('login')">
-        <form
-          @keydown="form.onKeydown($event)"
-          @submit.prevent="login"
-        >
-          <!-- Email -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
-            <div class="col-md-7">
-              <input
-                :class="{ 'is-invalid': form.errors.has('email') }"
-                class="form-control"
-                name="email"
-                type="email"
-                v-model="form.email"
-              >
-              <has-error
-                :form="form"
-                field="email"
-              />
-            </div>
-          </div>
+  <div :title="$t('login')">
+    <h2 class="text-lg font-medium text-gray-700 mb-3">欢迎回来！</h2>
+    <p class="text-gray-600 text-sm mb-6">请使用您的账号密码登录</p>
 
-          <!-- Password -->
-          <div class="form-group row">
-            <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
-            <div class="col-md-7">
-              <input
-                :class="{ 'is-invalid': form.errors.has('password') }"
-                class="form-control"
-                name="password"
-                type="password"
-                v-model="form.password"
-              >
-              <has-error
-                :form="form"
-                field="password"
-              />
-            </div>
-          </div>
+    <form
+      @keydown="form.onKeydown($event)"
+      @submit.prevent="login"
+    >
+      <!-- Email -->
+      <div class="mb-6">
+        <label class="text-sm font-bold">{{ $t('username') }}</label>
+        <div class="my-2">
+          <input
+            :class="{ 'is-invalid': form.errors.has('username') }"
+            class="form-input w-full"
+            name="username"
+            type="text"
+            v-model="form.username"
+          >
+          <has-error
+            :form="form"
+            field="username"
+          />
+        </div>
+      </div>
 
-          <!-- Remember Me -->
-          <div class="form-group row">
-            <div class="col-md-3"/>
-            <div class="col-md-7 d-flex">
-              <checkbox
-                name="remember"
-                v-model="remember"
-              >{{ $t('remember_me') }}</checkbox>
+      <!-- Password -->
+      <div class="mb-6">
+        <label class="text-sm font-bold">{{ $t('password') }}</label>
+        <div class="my-2">
+          <input
+            :class="{ 'is-invalid': form.errors.has('password') }"
+            class="form-input w-full"
+            name="password"
+            type="password"
+            v-model="form.password"
+          >
+          <has-error
+            :form="form"
+            field="password"
+          />
+        </div>
+      </div>
 
-              <router-link
-                :to="{ name: 'password.request' }"
-                class="small ml-auto my-auto"
-              >{{ $t('forgot_password') }}</router-link>
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-md-7 offset-md-3 d-flex">
-              <!-- Submit Button -->
-              <v-button :loading="form.busy">{{ $t('login') }}</v-button>
-            </div>
-          </div>
-        </form>
-      </card>
-    </div>
+      <!-- Remember Me -->
+      <div class="flex items-center justify-between">
+        <router-link
+          :to="{ name: 'password.request' }"
+          class="text-blue-600"
+        >{{ $t('forgot_password') }}</router-link>
+        <el-button
+          :loading="form.busy"
+          class="outline-none focus:outline-shadow"
+          type="primary"
+        >{{ $t('login') }}</el-button>
+      </div>
+    </form>
   </div>
 </template>
 
@@ -76,13 +65,15 @@ import Form from 'vform'
 export default {
   middleware: 'guest',
 
+  layout: 'auth',
+
   metaInfo() {
     return { title: this.$t('login') }
   },
 
   data: () => ({
     form: new Form({
-      email: '',
+      username: '',
       password: ''
     }),
     remember: false

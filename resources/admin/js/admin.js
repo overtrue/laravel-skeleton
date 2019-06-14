@@ -23,6 +23,7 @@ files.keys().map(key =>
 
 /* eslint-disable no-new */
 new Vue({
+  el: '#app',
   i18n,
   store,
   router,
