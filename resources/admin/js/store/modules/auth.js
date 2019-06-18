@@ -1,6 +1,6 @@
-import axios from 'axios'
-import Cookies from 'js-cookie'
-import * as types from '../mutation-types'
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import * as types from '../mutation-types';
 
 // state
 export const state = {
@@ -17,9 +17,9 @@ export const getters = {
 
 // mutations
 export const mutations = {
-  [types.SAVE_TOKEN] (state, { token, remember }) {
+  [types.SAVE_TOKEN] (state, { token, expires }) {
     state.token = token
-    Cookies.set('token', token, { expires: remember ? 365 : null })
+    Cookies.set('token', token, { expires: expires ? 365 : null })
   },
 
   [types.FETCH_USER_SUCCESS] (state, { user }) {

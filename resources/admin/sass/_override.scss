@@ -1,1 +1,13 @@
 // Overrides
+
+.el-input input {
+  &:focus {
+    background-color: #fff;
+    @apply .shadow-outline;
+  }
+}
+
+.el-table--fit.border {
+  border-right-style: solid;
+  @apply .border-l .border-gray-300;
+}

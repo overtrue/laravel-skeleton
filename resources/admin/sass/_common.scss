@@ -5,6 +5,7 @@ html {
 body {
     min-height: 100vh;
     background-color: #F6F8FC;
+    @apply .text-gray-700
 }
 
 #app {

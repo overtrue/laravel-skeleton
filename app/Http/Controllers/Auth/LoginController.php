@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Exceptions\VerifyEmailException;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+/**
+ * Class LoginController
+ */
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
-
     /**
      * Create a new controller instance.
      *
@@ -20,81 +18,33 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest');
     }
 
     /**
      * Attempt to log the user into the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
-    protected function attemptLogin(Request $request)
+    public function __invoke(Request $request)
     {
-        $token = $this->guard()->attempt($this->credentials($request));
+        try {
+            $token = app(Client::class)->post(url('/oauth/token'), [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => config('passport.clients.password.client_id'),
+                    'client_secret' => config('passport.clients.password.client_secret'),
+                    'username' => $request->get('username'),
+                    'password' => $request->get('password'),
+                    'scope' => '',
+                ],
+            ]);
 
-        if (! $token) {
-            return false;
+            return $token;
+        } catch (\Exception $e) {
+            \abort($e->getCode(), $e->getMessage());
         }
-
-        $user = $this->guard()->user();
-        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
-            return false;
-        }
-
-        $this->guard()->setToken($token);
-
-        return true;
-    }
-
-    /**
-     * Send the response after the user was authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function sendLoginResponse(Request $request)
-    {
-        $this->clearLoginAttempts($request);
-
-        $token = (string) $this->guard()->getToken();
-        $expiration = $this->guard()->getPayload()->get('exp');
-
-        return response()->json([
-            'token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => $expiration - time(),
-        ]);
-    }
-
-    /**
-     * Get the failed login response instance.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function sendFailedLoginResponse(Request $request)
-    {
-        $user = $this->guard()->user();
-        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
-            throw VerifyEmailException::forUser($user);
-        }
-
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
-    }
-
-    /**
-     * Log the user out of the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
     }
 }

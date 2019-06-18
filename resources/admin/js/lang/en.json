@@ -5,6 +5,7 @@
   "error_alert_text": "Something went wrong! Please try again.",
   "token_expired_alert_title": "Session Expired!",
   "token_expired_alert_text": "Please log in again to continue.",
+  "invalid_username_or_password": "Invalid username or password.",
   "login": "Log In",
   "register": "Register",
   "page_not_found": "Page Not Found",

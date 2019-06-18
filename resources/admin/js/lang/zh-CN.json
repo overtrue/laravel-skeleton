@@ -5,6 +5,7 @@
   "error_alert_text": "遇到一些错误，请稍后重试~",
   "token_expired_alert_title": "验证过期!",
   "token_expired_alert_text": "请稍后重新登录系统",
+  "invalid_username_or_password": "账号或密码错误",
   "login": "登录",
   "register": "注册",
   "page_not_found": "页面不存在",

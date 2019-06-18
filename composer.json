@@ -9,18 +9,23 @@
         "fideloper/proxy": "^4.0",
         "laravel/dusk": "^5.1",
         "laravel/framework": "5.8.*",
+        "laravel/passport": "^7.3",
         "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
-        "tymon/jwt-auth": "^1.0.0-rc.4.1"
+        "overtrue/laravel-lang": "^3.0",
+        "overtrue/laravel-options": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
         "doctrine/dbal": "^2.9",
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
+        "guzzlehttp/guzzle": "^6.3",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^7.5"
+        "overtrue/laravel-query-logger": "^1.0",
+        "phpunit/phpunit": "^7.5",
+        "predis/predis": "^1.1"
     },
     "config": {
         "optimize-autoloader": true,

@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs-extra')
 const mix = require('laravel-mix')
+require('laravel-mix-versionhash')
 const tailwindcss = require('tailwindcss')
 const purgecss = require('@fullhuman/postcss-purgecss')({
   // Specify the paths to all of the template files in your project
@@ -15,12 +16,11 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
 })
 
-require('laravel-mix-versionhash')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 mix
-  .js('resources/admin/js/admin.js', 'public/dist/js')
-  .sass('resources/admin/sass/admin.scss', 'public/dist/css')
+  .js('resources/admin/js/app.js', 'public/dist/admin/js')
+  .sass('resources/admin/sass/app.scss', 'public/dist/admin/css')
   .options({
     processCssUrls: true,
     extractVueStyles: true,
@@ -47,24 +47,7 @@ mix.webpackConfig({
     }
   },
   output: {
-    chunkFilename: 'dist/js/admin/[chunkhash].js',
-    path: mix.config.hmr ? '/' : path.resolve(__dirname, './public/build')
+    chunkFilename: 'dist/admin/js/[chunkhash].js',
+    path: mix.config.hmr ? '/' : path.resolve(__dirname, './public/')
   }
 })
-
-mix.then(() => {
-  if (!mix.config.hmr) {
-    process.nextTick(() => publishAseets())
-  }
-})
-
-function publishAseets () {
-  const publicDir = path.resolve(__dirname, './public')
-
-  if (mix.inProduction()) {
-    fs.removeSync(path.join(publicDir, 'dist'))
-  }
-
-  fs.copySync(path.join(publicDir, 'build', 'dist'), path.join(publicDir, 'dist'))
-  fs.removeSync(path.join(publicDir, 'build'))
-}

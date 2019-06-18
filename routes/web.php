@@ -12,4 +12,4 @@
 */
 
 Route::view('admin/{path?}', 'admin')->where('path', '(.*)');
-Route::view('{path}', 'app')->where('path', '(.*)');
+Route::view('{path}', 'app')->where('path', '([^(api)].*)');

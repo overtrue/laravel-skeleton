@@ -20,7 +20,7 @@
         v-if="menu['children']"
       >
         <template slot="title">
-          <icon
+          <Icon
             :name="menu.icon || 'chart-bubble'"
             class="mdi-lg mdi-fw"
           />
@@ -32,7 +32,7 @@
           :route="submenu.route"
           v-for="submenu of menu['children']"
         >
-          <icon
+          <Icon
             :name="submenu.icon || 'chart-bubble'"
             class="mdi-lg mdi-fw"
           />
@@ -44,7 +44,7 @@
         :route="menu.route"
         v-else
       >
-        <icon
+        <Icon
           :name="menu.icon || 'chart-bubble'"
           class="mdi-lg mdi-fw"
         />
@@ -80,18 +80,17 @@ export default {
       menus: [
         {
           label: '控制面板',
-          route: { name: 'index' }
+          route: { name: 'home' }
+        },
+        {
+          label: '用户管理',
+          icon: 'account',
+          route: { name: 'users.index' }
         },
         {
           label: '设置',
           icon: 'settings',
-          children: [
-            {
-              label: '账号管理',
-              icon: 'account',
-              route: { name: 'users.index' }
-            }
-          ]
+          children: []
         }
       ]
     }
@@ -101,7 +100,7 @@ export default {
 
 <style lang="scss">
 .bd-sidebar {
-  width: 200px;
+  width: 256px;
 
   .is-active {
     background: rgb(36, 44, 58) !important;

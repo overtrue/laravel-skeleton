@@ -51,6 +51,7 @@
         >{{ $t('forgot_password') }}</router-link>
         <el-button
           :loading="form.busy"
+          @click="login"
           class="outline-none focus:outline-shadow"
           type="primary"
         >{{ $t('login') }}</el-button>
@@ -75,19 +76,23 @@ export default {
     form: new Form({
       username: '',
       password: ''
-    }),
-    remember: false
+    })
   }),
 
   methods: {
     async login() {
-      // Submit the form.
-      const { data } = await this.form.post('/api/login')
+      let data = null
+      try {
+        let response = await this.form.post('/api/login')
+        data = response.data
+      } catch (error) {
+        return this.$message.error(this.i18n.t('invalid_username_or_password'))
+      }
 
       // Save the token.
       this.$store.dispatch('auth/saveToken', {
-        token: data.token,
-        remember: this.remember
+        token: data.access_token,
+        expires: data.expires_in
       })
 
       // Fetch the user.

@@ -1,5 +1,5 @@
 <template>
-  <nav class="bd-navbar bg-white border-bottom flex h-12 fixed-top px-4 mb-4 items-center justify-between">
+  <nav class="bd-navbar bg-white border-b flex h-12 fixed-top px-4 mb-4 items-center">
     <ul class="bd-navbar-nav flex">
       <li class="nav-item pr-4">
         <a class="nav-link">
@@ -7,9 +7,17 @@
         </a>
       </li>
     </ul>
+    <el-breadcrumb class="flex ml-3">
+      <el-breadcrumb-item
+        :key="index"
+        :to="{ path: breadcrumb.path }"
+        v-for="(breadcrumb, index) in breadcrumbs"
+      >{{ breadcrumb.title }}</el-breadcrumb-item>
+    </el-breadcrumb>
+
     <el-dropdown
       @command="handleUserAction"
-      class="mr-4"
+      class="mr-4 ml-auto"
       v-if="user"
     >
       <span class="el-dropdown-link flex items-center">
@@ -41,7 +49,16 @@
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters({ user: 'auth/user' })
+    ...mapGetters({ user: 'auth/user' }),
+    breadcrumbs() {
+      return this.$route.matched.map(item => {
+        return {
+          name: item.name,
+          path: item.path,
+          title: item.meta.title
+        }
+      })
+    }
   },
   methods: {
     async handleUserAction(command) {

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Message } from 'element-ui'
 import i18n from '~/plugins/i18n'
 import router from '~/router'
 import store from '~/store'
@@ -24,32 +25,16 @@ axios.interceptors.request.use(request => {
 axios.interceptors.response.use(
   response => response,
   error => {
-    const { status } = error.response
+    const { status, data } = error.response
 
-    if (status >= 500) {
-      Swal.fire({
-        type: 'error',
-        title: i18n.t('error_alert_title'),
-        text: i18n.t('error_alert_text'),
-        reverseButtons: true,
-        confirmButtonText: i18n.t('ok'),
-        cancelButtonText: i18n.t('cancel')
-      })
+    if (status >= 500 || [405, 400, 403].indexOf(status) > -1) {
+      Message.error(data.message || i18n.t('error_alert_text'))
     }
 
     if (status === 401 && store.getters['auth/check']) {
-      Swal.fire({
-        type: 'warning',
-        title: i18n.t('token_expired_alert_title'),
-        text: i18n.t('token_expired_alert_text'),
-        reverseButtons: true,
-        confirmButtonText: i18n.t('ok'),
-        cancelButtonText: i18n.t('cancel')
-      }).then(() => {
-        store.commit('auth/LOGOUT')
-
-        router.push({ name: 'login' })
-      })
+      Message.warning(i18n.t('token_expired_alert_text'))
+      store.commit('auth/LOGOUT')
+      router.push({ name: 'login' })
     }
 
     return Promise.reject(error)
