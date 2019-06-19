@@ -94,54 +94,6 @@
           v-model="user.password_confirmation"
         ></el-input>
       </el-form-item>
-      <el-form-item
-        :rules="[isEditing ? {} : { required: true, message: '密码不能为空'}]"
-        class="w-1/2"
-        label="确认密码"
-      >
-        <el-input
-          maxlength="14"
-          placeholder="再次输入上面的密码"
-          type="password"
-          v-model="user.password_confirmation"
-        ></el-input>
-      </el-form-item>
-      <el-form-item
-        :rules="[isEditing ? {} : { required: true, message: '密码不能为空'}]"
-        class="w-1/2"
-        label="确认密码"
-      >
-        <el-input
-          maxlength="14"
-          placeholder="再次输入上面的密码"
-          type="password"
-          v-model="user.password_confirmation"
-        ></el-input>
-      </el-form-item>
-      <el-form-item
-        :rules="[isEditing ? {} : { required: true, message: '密码不能为空'}]"
-        class="w-1/2"
-        label="确认密码"
-      >
-        <el-input
-          maxlength="14"
-          placeholder="再次输入上面的密码"
-          type="password"
-          v-model="user.password_confirmation"
-        ></el-input>
-      </el-form-item>
-      <el-form-item
-        :rules="[isEditing ? {} : { required: true, message: '密码不能为空'}]"
-        class="w-1/2"
-        label="确认密码"
-      >
-        <el-input
-          maxlength="14"
-          placeholder="再次输入上面的密码"
-          type="password"
-          v-model="user.password_confirmation"
-        ></el-input>
-      </el-form-item>
     </el-form>
   </FormPage>
 </template>
