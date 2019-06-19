@@ -4,13 +4,11 @@
     :router="true"
     active-text-color="#FFF"
     background-color="#2d3748"
-    class="bd-sidebar overflow-x-hidden flex-shrink-0"
+    class="bd-sidebar overflow-x-hidden min-h-screen fixed top-0"
     text-color="#cbd5e0"
     v-cloak
   >
-    <div class="logo text-gray-300 py-4 text-center">
-      <div class="my-4">{{ $metaInfo.title }}</div>
-    </div>
+    <div class="logo h-16 bg-gray-900 text-gray-300 flex items-center justify-center text-center">{{ $metaInfo.title }}</div>
     <div
       :key="menu.label"
       v-for="menu of menus"

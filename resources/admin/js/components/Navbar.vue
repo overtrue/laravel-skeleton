@@ -1,5 +1,5 @@
 <template>
-  <nav class="bd-navbar bg-white border-b flex h-12 fixed-top px-4 mb-4 items-center">
+  <nav class="bd-navbar bg-white border-b flex h-16 sticky top px-4 mb-4 items-center">
     <ul class="bd-navbar-nav flex">
       <li class="nav-item pr-4">
         <a class="nav-link">
