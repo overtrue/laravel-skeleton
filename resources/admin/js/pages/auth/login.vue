@@ -50,6 +50,7 @@
           class="text-blue-600"
         >{{ $t('forgot_password') }}</router-link>
         <el-button
+          :disabled="!formReady"
           :loading="form.busy"
           @click="login"
           class="outline-none focus:outline-shadow"
@@ -79,6 +80,12 @@ export default {
     })
   }),
 
+  computed: {
+    formReady() {
+      return this.form.username.length > 3 && this.form.password.length > 4
+    }
+  },
+
   methods: {
     async login() {
       let data = null
@@ -86,7 +93,7 @@ export default {
         let response = await this.form.post('/api/login')
         data = response.data
       } catch (error) {
-        return this.$message.error(this.i18n.t('invalid_username_or_password'))
+        return this.$message.error(this.$i18n.t('invalid_username_or_password'))
       }
 
       // Save the token.
