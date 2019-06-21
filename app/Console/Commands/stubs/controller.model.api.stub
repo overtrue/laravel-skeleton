@@ -1,0 +1,92 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\Resource;
+use DummyRootNamespaceHttp\Controllers\Controller;
+
+class DummyClass extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function index(Request $request)
+    {
+        return Resource::collection(DummyModelClass::latest()->paginate($request->get('per_page')));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Resources\Json\Resource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request)
+    {
+        $this->authorize('create', DummyModelClass::class);
+
+        $this->validate($request, [
+            //...
+        ]);
+
+        return new Resource(DummyModelClass::create($request->all()));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Resources\Json\Resource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show(DummyModelClass $DummyModelVariable)
+    {
+        $this->authorize('view', $DummyModelVariable);
+
+        return new Resource($DummyModelVariable);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Resources\Json\Resource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update(Request $request, DummyModelClass $DummyModelVariable)
+    {
+        $this->authorize('update', $DummyModelVariable);
+
+        $this->validate($request, [
+            //...
+        ]);
+
+        $DummyModelVariable->update($request->all());
+
+        return new Resource($DummyModelVariable);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \DummyFullModelClass  $DummyModelVariable
+     * @return \Illuminate\Http\Resources\Json\Resource
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(DummyModelClass $DummyModelVariable)
+    {
+        $this->authorize('delete', $DummyModelVariable);
+
+        $DummyModelVariable->delete();
+
+        return response()->noContent();
+    }
+}
