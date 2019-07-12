@@ -6,7 +6,7 @@ use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
 use App\Traits\Filterable;
 use App\Traits\HasCacheProperty;
-use App\Traits\HasExtendsProperty;
+use App\Traits\HasExtendProperties;
 use App\Traits\HasSettingsProperty;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
@@ -26,7 +26,7 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasSettingsProperty;
     use HasCacheProperty;
-    use HasExtendsProperty;
+    use HasExtendProperties;
     use Filterable;
 
     // 性别
