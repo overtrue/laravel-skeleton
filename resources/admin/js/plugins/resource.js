@@ -48,4 +48,14 @@ export default class Resource {
   destroy (id) {
     return this.delete(id)
   }
+
+  save(payload, id = null, keyName = 'id') {
+    id = id || payload[keyName]
+
+    if (id) {
+      return this.update(id, payload)
+    }
+
+    return this.store(payload)
+  }
 }
