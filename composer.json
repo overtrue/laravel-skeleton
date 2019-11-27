@@ -10,7 +10,7 @@
         "fideloper/proxy": "^4.0",
         "laravel/dusk": "^5.1",
         "laravel/framework": "^6.0",
-        "laravel/passport": "^7.3",
+        "laravel/passport": "^8.0",
         "laravel/socialite": "^4.0",
         "laravel/tinker": "^1.0",
         "overtrue/laravel-lang": "^3.0",
