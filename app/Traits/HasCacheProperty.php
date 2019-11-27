@@ -6,8 +6,6 @@ use Illuminate\Support\Fluent;
 
 /**
  * Trait HasCacheProperty.
- *
- * @author v_haodouliu <v_haodouliu@tencent.com>
  */
 trait HasCacheProperty
 {

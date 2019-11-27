@@ -1,7 +1,5 @@
 const path = require('path')
-const fs = require('fs-extra')
 const mix = require('laravel-mix')
-require('laravel-mix-versionhash')
 const tailwindcss = require('tailwindcss')
 const purgecss = require('@fullhuman/postcss-purgecss')({
   // Specify the paths to all of the template files in your project
@@ -18,24 +16,17 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
 
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
-if (process.env.IS_ADMIN) {
-  return require('./webpack.mix.admin.js')
-}
-
 mix
-  .js('resources/js/app.js', 'public/dist/js')
-  .sass('resources/sass/app.scss', 'public/dist/css')
+  .js('resources/js/app.js', 'public/js')
+  .sass('resources/sass/app.scss', 'public/css')
   .options({
-    processCssUrls: true,
-    extractVueStyles: true,
-    postCss: [tailwindcss('./tailwind.config.js'), ...(process.env.NODE_ENV === 'production' ? [purgecss] : [])]
+    processCssUrls: false,
+    postCss: [tailwindcss('./tailwind.config.js')]
   })
+  .copy('node_modules/element-ui/lib/theme-chalk/fonts', 'public/css/fonts')
 
 if (mix.inProduction()) {
-  mix
-    // .extract() // Disabled until resolved: https://github.com/JeffreyWay/laravel-mix/issues/1889
-    // .version() // Use `laravel-mix-versionhash` for the generating correct Laravel Mix manifest file.
-    .versionHash()
+  mix.version()
 } else {
   mix.sourceMaps()
 }
@@ -49,9 +40,5 @@ mix.webpackConfig({
     alias: {
       '~': path.join(__dirname, './resources/js')
     }
-  },
-  output: {
-    chunkFilename: 'dist/js/[chunkhash].js',
-    path: mix.config.hmr ? '/' : path.resolve(__dirname, './public/')
   }
 })

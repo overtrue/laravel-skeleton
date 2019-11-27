@@ -1,41 +1,38 @@
 <template>
   <div id="app">
-    <loading ref="loading" />
+    <loading ref="loading"/>
 
-    <transition name="page" mode="out-in">
-      <component :is="layout" v-if="layout" />
+    <transition
+      mode="out-in"
+      name="page"
+    >
+      <component
+        :is="layout"
+        v-if="layout"
+      />
     </transition>
   </div>
 </template>
 
 <script>
-import Loading from './Loading'
-
 // Load layout components dynamically.
 const requireContext = require.context('~/layouts', false, /.*\.vue$/)
 
-const layouts = requireContext.keys()
-  .map(file =>
-    [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)]
-  )
+const layouts = requireContext
+  .keys()
+  .map(file => [file.replace(/(^.\/)|(\.vue$)/g, ''), requireContext(file)])
   .reduce((components, [name, component]) => {
     components[name] = component.default || component
     return components
   }, {})
 
 export default {
-  el: '#app',
-
-  components: {
-    Loading
-  },
-
   data: () => ({
     layout: null,
     defaultLayout: 'default'
   }),
 
-  metaInfo () {
+  metaInfo() {
     const { appName } = window.config
 
     return {
@@ -44,7 +41,7 @@ export default {
     }
   },
 
-  mounted () {
+  mounted() {
     this.$loading = this.$refs.loading
   },
 
@@ -54,7 +51,7 @@ export default {
      *
      * @param {String} layout
      */
-    setLayout (layout) {
+    setLayout(layout) {
       if (!layout || !layouts[layout]) {
         layout = this.defaultLayout
       }

@@ -1,96 +1,97 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        {{ appName }}
-      </router-link>
+  <nav class="bd-navbar bg-white border-b flex h-16 sticky-top px-4 mb-4 items-center">
+    <ul class="bd-navbar-nav flex">
+      <li class="nav-item pr-4">
+        <a class="nav-link">
+          <i class="el-icon-s-fold"></i>
+        </a>
+      </li>
+    </ul>
+    <el-breadcrumb class="flex ml-3">
+      <el-breadcrumb-item
+        :key="index"
+        :to="{ path: breadcrumb.path }"
+        v-for="(breadcrumb, index) in breadcrumbs"
+      >{{ breadcrumb.title }}</el-breadcrumb-item>
+    </el-breadcrumb>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false">
-        <span class="navbar-toggler-icon" />
-      </button>
-
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-          <!-- Authenticated -->
-          <li v-if="user" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            >
-              <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
-              {{ user.name }}
-            </a>
-            <div class="dropdown-menu">
-              <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
-                <fa icon="cog" fixed-width />
-                {{ $t('settings') }}
-              </router-link>
-
-              <div class="dropdown-divider" />
-              <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
-                <fa icon="sign-out-alt" fixed-width />
-                {{ $t('logout') }}
-              </a>
-            </div>
-          </li>
-          <!-- Guest -->
-          <template v-else>
-            <li class="nav-item">
-              <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
-                {{ $t('login') }}
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
-                {{ $t('register') }}
-              </router-link>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </div>
+    <el-dropdown
+      @command="handleUserAction"
+      class="mr-4 ml-auto"
+      v-if="user"
+    >
+      <span class="el-dropdown-link flex items-center">
+        <span class="m-r-1">{{ user.name }}</span>
+        <img
+          :src="user.avatar || '/img/default-avatar.png' "
+          alt="User"
+          class="avatar ml-2 shadow-sm"
+          height="26"
+          width="26"
+        />
+      </span>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item>
+          <icon name="account" />个人资料
+        </el-dropdown-item>
+        <el-dropdown-item>
+          <icon name="settings" />设置
+        </el-dropdown-item>
+        <el-dropdown-item command="logout">
+          <icon name="logout-variant" />登出
+        </el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
   </nav>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import LocaleDropdown from './LocaleDropdown'
-
 export default {
-  components: {
-    LocaleDropdown
+  computed: {
+    ...mapGetters({ user: 'auth/user' }),
+    breadcrumbs() {
+      return this.$route.matched.map(item => {
+        return {
+          name: item.name,
+          path: item.path,
+          title: item.meta.title
+        }
+      })
+    }
   },
-
-  data: () => ({
-    appName: window.config.appName
-  }),
-
-  computed: mapGetters({
-    user: 'auth/user'
-  }),
-
   methods: {
-    async logout () {
-      // Log out the user.
-      await this.$store.dispatch('auth/logout')
+    async handleUserAction(command) {
+      switch (command) {
+        case 'logout':
+          await this.$store.dispatch('auth/logout')
+          this.$router.push({ name: 'login' })
+          break
 
-      // Redirect to login.
-      this.$router.push({ name: 'login' })
+        default:
+          break
+      }
     }
   }
 }
 </script>
 
-<style scoped>
-.profile-photo {
-  width: 2rem;
-  height: 2rem;
-  margin: -.375rem 0;
+<style lang="scss">
+.bd-navbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+
+  .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    color: #444;
+    text-decoration: none;
+  }
+
+  .subnav-search {
+    color: #343a40;
+  }
 }
 </style>

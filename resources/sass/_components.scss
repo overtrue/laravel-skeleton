@@ -1,4 +1,8 @@
 
 .avatar {
-    @apply .rounded-full;
+    @apply .rounded-full .border;
 }
+
+h1 { @apply .text-3xl .mb-4; }
+h2 { @apply .text-2xl .mb-2; }
+h3 { @apply .text-xl .mb-2; }

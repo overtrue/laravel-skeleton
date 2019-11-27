@@ -3,23 +3,29 @@ function page (path) {
 }
 
 export default [
-  { path: '/', name: 'welcome', component: page('welcome.vue') },
-
-  { path: '/login', name: 'login', component: page('auth/login.vue') },
-  { path: '/register', name: 'register', component: page('auth/register.vue') },
-  { path: '/password/reset', name: 'password.request', component: page('auth/password/email.vue') },
-  { path: '/password/reset/:token', name: 'password.reset', component: page('auth/password/reset.vue') },
-  { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
-  { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
-
-  { path: '/home', name: 'home', component: page('home.vue') },
-  { path: '/settings',
-    component: page('settings/index.vue'),
+  {
+    path: '/admin',
+    meta: { title: '管理后台' },
+    component: { template: `<router-view></router-view>` },
     children: [
-      { path: '', redirect: { name: 'settings.profile' } },
-      { path: 'profile', name: 'settings.profile', component: page('settings/profile.vue') },
-      { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
-    ] },
+      { path: '', name: 'home', component: page('home.vue'), meta: { title: '首页' } },
 
-  { path: '*', component: page('errors/404.vue') }
+      { path: 'login', name: 'login', component: page('auth/login.vue'), meta: { title: '登录' } },
+      { path: 'password/reset', name: 'password.request', component: page('auth/password/email.vue'), meta: { title: '重置密码' } },
+      { path: 'password/reset/:token', name: 'password.reset', component: page('auth/password/reset.vue'), meta: { title: '重置密码' } },
+
+      {
+        path: 'users',
+        component: { template: `<router-view/>` },
+        meta: { title: '用户管理' },
+        children: [
+          { path: '', name: 'users.index', component: page('users/index.vue'), meta: { title: '用户列表' } },
+          { path: 'create', name: 'users.create', component: page('users/form.vue'), meta: { title: '新建用户' } },
+          { path: ':id/edit', name: 'users.edit', component: page('users/form.vue'), meta: { title: '编辑用户' } }
+        ]
+      },
+
+      { path: '*', component: page('errors/404.vue'), meta: { title: '404' } }
+    ]
+  }
 ]

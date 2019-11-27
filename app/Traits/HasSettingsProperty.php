@@ -7,8 +7,6 @@ use Illuminate\Support\Fluent;
 /**
  * Trait HasSettingsProperty.
  *
- * @author artisan <artisan@tencent.com>
- *
  * @property \Illuminate\Support\Fluent $settings
  */
 trait HasSettingsProperty

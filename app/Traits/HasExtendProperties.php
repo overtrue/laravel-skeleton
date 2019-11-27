@@ -7,8 +7,6 @@ use Illuminate\Support\Fluent;
 /**
  * Trait HasExtendProperties.
  *
- * @author artisan <artisan@tencent.com>
- *
  * @property array $properties
  */
 trait HasExtendProperties
