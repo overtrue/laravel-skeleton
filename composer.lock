@@ -2089,20 +2089,20 @@
         },
         {
             "name": "overtrue/laravel-options",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-options.git",
-                "reference": "82beb3f7465913499d90328202b7fb9d29952024"
+                "reference": "3fa44b28d4e14a15d107ad9872efe5dcf26d247f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-options/zipball/82beb3f7465913499d90328202b7fb9d29952024",
-                "reference": "82beb3f7465913499d90328202b7fb9d29952024",
+                "url": "https://api.github.com/repos/overtrue/laravel-options/zipball/3fa44b28d4e14a15d107ad9872efe5dcf26d247f",
+                "reference": "3fa44b28d4e14a15d107ad9872efe5dcf26d247f",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.5||~6.0",
+                "laravel/framework": "~5.5||~6.0||~7.0",
                 "php": ">=7.1"
             },
             "require-dev": {
@@ -2142,7 +2142,7 @@
                 "laravel-options",
                 "overtrue"
             ],
-            "time": "2019-09-04T13:20:55+00:00"
+            "time": "2020-03-06T13:51:07+00:00"
         },
         {
             "name": "paragonie/random_compat",
