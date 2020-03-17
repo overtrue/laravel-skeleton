@@ -31,13 +31,13 @@ class LoginController extends Controller
     public function __invoke(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required',
             'device_name' => 'string',
         ]);
 
         /* @var User $user */
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('username', $request->username)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([

@@ -12,7 +12,7 @@ class RegisterTest extends TestCase
     {
         $this->postJson('/api/register', [
             'name' => 'Test User',
-            'email' => 'test@test.app',
+            'username' => 'test@test.app',
             'password' => 'secret',
             'password_confirmation' => 'secret',
         ])
@@ -21,17 +21,17 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    public function can_not_register_with_existing_email()
+    public function can_not_register_with_existing_username()
     {
-        factory(User::class)->create(['email' => 'test@test.app']);
+        factory(User::class)->create(['username' => 'test@test.app']);
 
         $this->postJson('/api/register', [
             'name' => 'Test User',
-            'email' => 'test@test.app',
+            'username' => 'test@test.app',
             'password' => 'secret',
             'password_confirmation' => 'secret',
         ])
         ->assertStatus(422)
-        ->assertJsonValidationErrors(['email']);
+        ->assertJsonValidationErrors(['username']);
     }
 }

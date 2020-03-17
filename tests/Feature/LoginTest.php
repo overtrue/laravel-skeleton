@@ -22,7 +22,7 @@ class LoginTest extends TestCase
     public function authenticate()
     {
         $this->postJson('/api/login', [
-            'email' => $this->user->email,
+            'username' => $this->user->username,
             'password' => 'password',
         ])
         ->assertSuccessful()
@@ -36,14 +36,14 @@ class LoginTest extends TestCase
         Airlock::actingAs($this->user);
             $this->getJson('/api/user')
             ->assertSuccessful()
-            ->assertJsonStructure(['id', 'name', 'email']);
+            ->assertJsonStructure(['id', 'name', 'username']);
     }
 
     /** @test */
     public function log_out()
     {
         $token = $this->postJson('/api/login', [
-            'email' => $this->user->email,
+            'username' => $this->user->username,
             'password' => 'password',
         ])->json()['token'];
 
