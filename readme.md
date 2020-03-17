@@ -76,11 +76,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-	use Filterable;
+    use Filterable;
 
-	protected $filterable = [
-    'user_id', 'category_id', 'version', 
-  ];
+    protected $filterable = [
+        'user_id', 'category_id', 'version', 
+    ];
 }
 ```
 
