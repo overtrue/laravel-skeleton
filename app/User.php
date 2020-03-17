@@ -6,7 +6,7 @@ use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
 use App\Traits\Filterable;
 use App\Traits\HasCacheProperty;
-use App\Traits\HasExtendProperties;
+use App\Traits\HasExtendsProperty;
 use App\Traits\HasSettingsProperty;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
@@ -26,7 +26,7 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasSettingsProperty;
     use HasCacheProperty;
-    use HasExtendProperties;
+    use HasExtendsProperty;
     use Filterable;
 
     // 性别
@@ -70,7 +70,7 @@ class User extends Authenticatable
     protected $fillable = [
         'creator_id', 'name', 'real_name', 'username', 'avatar', 'email', 'phone', 'gender', 'status',
         'birthday', 'email_verified_at', 'password', 'cache', 'extends', 'settings',
-        'is_admin', 'is_visible', 'last_active_at', 'frozen_at', 'last_refreshed_at',
+        'is_admin', 'is_visible', 'last_active_at', 'frozen_at', 
     ];
 
     /**
@@ -92,10 +92,11 @@ class User extends Authenticatable
         'creator_id' => 'int',
         'phone' => 'int',
         'cache' => 'array',
-        'properties' => 'array',
+        'extends' => 'array',
         'settings' => 'array',
         'is_admin' => 'bool',
         'is_visible' => 'bool',
+        'birthday' => 'date',
         'email_verified_at' => 'datetime',
     ];
 
