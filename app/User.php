@@ -70,7 +70,7 @@ class User extends Authenticatable
     protected $fillable = [
         'creator_id', 'name', 'real_name', 'username', 'avatar', 'email', 'phone', 'gender', 'status',
         'birthday', 'email_verified_at', 'password', 'cache', 'extends', 'settings',
-        'is_admin', 'is_visible', 'last_active_at', 'frozen_at', 
+        'is_admin', 'is_visible', 'last_active_at', 'frozen_at',
     ];
 
     /**

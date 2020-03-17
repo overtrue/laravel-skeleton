@@ -22,7 +22,7 @@ class RequestMacroServiceProvider extends ServiceProvider
         Request::macro('includes', function () {
             $request = request();
             if ($request->has('include')) {
-                return array_filter(\array_map('trim', \explode(',', $request->get('include'))));
+                return array_filter(\array_map('trim', \explode(';', $request->get('include'))));
             }
             return [];
         });
