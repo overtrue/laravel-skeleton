@@ -13,23 +13,18 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::get('/settings', 'SettingController@index');
+
+Route::post('/login', 'Auth\LoginController');
+Route::post('/logout', 'Auth\LogoutController');
+Route::post('/register', 'Auth\RegisterController');
+
+Route::group(['middleware' => 'auth:airlock'], function () {
     Route::get('/user', 'UserController@user');
-});
 
-Route::group(['middleware' => 'guest:api'], function () {
-    Route::post('login', 'Auth\LoginController');
-    Route::post('register', 'Auth\RegisterController@register');
-
-    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-    Route::post('email/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
-    Route::post('email/resend', 'Auth\VerificationController@resend');
-});
-
-
-Route::group(['prefix' => 'admin', 'middleware' => 'auth:api', 'namespace' => 'Admin'], function() {
-    Route::resource('users', 'UserController');
-    Route::resource('settings', 'SettingController');
+    // admin
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+        Route::resource('users', 'UserController');
+        Route::resource('settings', 'SettingController');
+    });
 });

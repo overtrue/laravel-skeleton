@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use GuzzleHttp\Client;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
-/**
- * Class LoginController
- */
 class LoginController extends Controller
 {
     /**
@@ -26,25 +25,26 @@ class LoginController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return bool
+     * @return array
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function __invoke(Request $request)
     {
-        try {
-            $token = app(Client::class)->post(url('/oauth/token'), [
-                'form_params' => [
-                    'grant_type' => 'password',
-                    'client_id' => config('passport.clients.password.client_id'),
-                    'client_secret' => config('passport.clients.password.client_secret'),
-                    'username' => $request->get('username'),
-                    'password' => $request->get('password'),
-                    'scope' => '',
-                ],
-            ]);
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+            'device_name' => 'string',
+        ]);
 
-            return $token;
-        } catch (\Exception $e) {
-            \abort($e->getCode(), $e->getMessage());
+        /* @var User $user */
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
+
+        return $user->createDeviceToken($request->get('device_name'));
     }
 }

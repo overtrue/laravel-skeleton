@@ -11,9 +11,9 @@ use App\Traits\HasSettingsProperty;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
-use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Airlock\HasApiTokens;
 
 /**
  * Class User
@@ -108,6 +108,7 @@ class User extends Authenticatable
         parent::boot();
 
         static::saving(function (User $user) {
+            $user->username = $user->username ?? $user->email;
             $user->name = $user->name ?? $user->real_name ?? $user->username;
 
             if (Hash::needsRehash($user->password)) {
@@ -151,17 +152,8 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string $username
-     *
-     * @return mixed
+     * @return string
      */
-    public function findForPassport($username)
-    {
-        return $this->where('username', $username)
-            ->orWhere('phone', $username)
-            ->orWhere('email', $username)->first();
-    }
-
     public function getAvatarAttribute()
     {
         return $this->attributes['avatar'] ?? self::DEFAULT_AVATAR;
@@ -180,6 +172,19 @@ class User extends Authenticatable
         $keyword = \sprintf('%%%s%%', $keyword);
 
         return $query->where('name', 'like', $keyword)->orWhere('username', 'like', $keyword);
+    }
+
+    /**
+     * @param string $device
+     *
+     * @return array
+     */
+    public function createDeviceToken(string $device = null)
+    {
+        return [
+            'token_type' => 'bearer',
+            'token' => $this->createToken($device ?? Device::PC)->plainTextToken,
+        ];
     }
 
     /**

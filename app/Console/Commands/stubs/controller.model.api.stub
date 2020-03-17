@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use DummyFullModelClass;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\Resource;
+use App\Http\Resources\Resource;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
 class DummyClass extends Controller
@@ -23,7 +23,7 @@ class DummyClass extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Resources\Json\Resource
+     * @return \App\Http\Resources\Resource
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -42,7 +42,7 @@ class DummyClass extends Controller
      * Display the specified resource.
      *
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Resources\Json\Resource
+     * @return \App\Http\Resources\Resource
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show(DummyModelClass $DummyModelVariable)
@@ -57,7 +57,7 @@ class DummyClass extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Resources\Json\Resource
+     * @return \App\Http\Resources\Resource
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -78,7 +78,7 @@ class DummyClass extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Resources\Json\Resource
+     * @return \App\Http\Resources\Resource
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(DummyModelClass $DummyModelVariable)

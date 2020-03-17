@@ -11,4 +11,4 @@
 |
 */
 
-Route::view('{path}', 'app')->where('path', '^(?!api).*');
+Route::get('/', 'HomeController@index');

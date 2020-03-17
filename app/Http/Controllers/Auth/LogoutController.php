@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
-class RegisterController extends Controller
+class LogoutController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -15,24 +17,20 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth:airlock');
     }
 
     /**
+     * Attempt to log the user into the application.
+     *
      * @param \Illuminate\Http\Request $request
      *
-     * @return mixed
+     * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
-        ]);
+        $request->user()->tokens()->delete();
 
-        /* @var \App\User $user */
-        $user = User::create($request->all());
-
-        return $user->createDeviceToken($request->get('device_name'));
+        return \response()->noContent();
     }
 }
