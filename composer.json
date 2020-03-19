@@ -14,7 +14,6 @@
     "fideloper/proxy": "^4.0",
     "fruitcake/laravel-cors": "^1.0",
     "laravel/airlock": "^1.0",
-    "laravel/dusk": "^5.1",
     "laravel/framework": "^7.1",
     "laravel/socialite": "^4.0",
     "laravel/tinker": "^2.0",
