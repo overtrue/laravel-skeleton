@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4b3f6026da778a017c59c7db66a5b38e",
+    "content-hash": "c735d4e8aa972cad7ca86a38a3ca3202",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -776,16 +776,16 @@
         },
         {
             "name": "laravel/airlock",
-            "version": "v1.0.1",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/airlock.git",
-                "reference": "9a66e767e203bbee83cd5fcda7ce265835468f84"
+                "url": "https://github.com/laravel/sanctum.git",
+                "reference": "32d5d784da70d64f6ff13d7e57c6e5ca16cc7f67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/airlock/zipball/9a66e767e203bbee83cd5fcda7ce265835468f84",
-                "reference": "9a66e767e203bbee83cd5fcda7ce265835468f84",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/32d5d784da70d64f6ff13d7e57c6e5ca16cc7f67",
+                "reference": "32d5d784da70d64f6ff13d7e57c6e5ca16cc7f67",
                 "shasum": ""
             },
             "require": {
@@ -807,13 +807,13 @@
                 },
                 "laravel": {
                     "providers": [
-                        "Laravel\\Airlock\\AirlockServiceProvider"
+                        "Laravel\\Sanctum\\SanctumServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Laravel\\Airlock\\": "src/"
+                    "Laravel\\Sanctum\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -826,13 +826,14 @@
                     "email": "taylor@laravel.com"
                 }
             ],
-            "description": "Laravel Airlock provides a featherweight authentication system for SPAs and simple APIs.",
+            "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
             "keywords": [
-                "airlock",
                 "auth",
-                "laravel"
+                "laravel",
+                "sanctum"
             ],
-            "time": "2020-03-12T13:34:05+00:00"
+            "abandoned": "laravel/sanctum",
+            "time": "2020-03-20T19:43:39+00:00"
         },
         {
             "name": "laravel/framework",
