@@ -19,7 +19,7 @@ Route::post('/login', 'Auth\LoginController');
 Route::post('/logout', 'Auth\LogoutController');
 Route::post('/register', 'Auth\RegisterController');
 
-Route::group(['middleware' => 'auth:airlock'], function () {
+Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/user', 'UserController@user');
 
     // admin

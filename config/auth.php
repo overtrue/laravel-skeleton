@@ -42,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'airlock',
+            'driver' => 'sanctum',
             'provider' => 'users',
         ],
     ],
