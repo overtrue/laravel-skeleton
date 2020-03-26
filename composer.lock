@@ -1703,16 +1703,16 @@
         },
         {
             "name": "overtrue/laravel-options",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-options.git",
-                "reference": "3fa44b28d4e14a15d107ad9872efe5dcf26d247f"
+                "reference": "b5cf686c830ab7ce5d9a96d9910cc1e85e583277"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-options/zipball/3fa44b28d4e14a15d107ad9872efe5dcf26d247f",
-                "reference": "3fa44b28d4e14a15d107ad9872efe5dcf26d247f",
+                "url": "https://api.github.com/repos/overtrue/laravel-options/zipball/b5cf686c830ab7ce5d9a96d9910cc1e85e583277",
+                "reference": "b5cf686c830ab7ce5d9a96d9910cc1e85e583277",
                 "shasum": ""
             },
             "require": {
@@ -1720,8 +1720,8 @@
                 "php": ">=7.1"
             },
             "require-dev": {
-                "orchestra/database": "^3.8",
-                "orchestra/testbench": "~3.8"
+                "orchestra/database": "^4.3",
+                "orchestra/testbench": "~4.7"
             },
             "type": "library",
             "extra": {
@@ -1756,7 +1756,7 @@
                 "laravel-options",
                 "overtrue"
             ],
-            "time": "2020-03-06T13:51:07+00:00"
+            "time": "2020-03-26T07:02:23+00:00"
         },
         {
             "name": "phpoption/phpoption",
