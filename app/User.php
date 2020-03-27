@@ -2,21 +2,21 @@
 
 namespace App;
 
-use App\Notifications\VerifyEmail;
 use App\Notifications\ResetPassword;
+use App\Notifications\VerifyEmail;
 use App\Traits\Filterable;
 use App\Traits\HasCacheProperty;
 use App\Traits\HasExtendsProperty;
 use App\Traits\HasSettingsProperty;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
- * Class User
+ * Class User.
  */
 class User extends Authenticatable
 {
@@ -149,7 +149,7 @@ class User extends Authenticatable
      */
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmail);
+        $this->notify(new VerifyEmail());
     }
 
     /**

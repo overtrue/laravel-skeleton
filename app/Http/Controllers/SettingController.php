@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 /**
- * Class SettingController
+ * Class SettingController.
  */
 class SettingController extends Controller
 {

@@ -9,7 +9,7 @@ class ControllerMakeCommand extends \Illuminate\Routing\Console\ControllerMakeCo
      */
     public function getStub()
     {
-        $custom = __DIR__. \strstr(parent::getStub(), '/stubs');
+        $custom = __DIR__ . \strstr(parent::getStub(), '/stubs');
 
         if (\file_exists($custom)) {
             return $custom;

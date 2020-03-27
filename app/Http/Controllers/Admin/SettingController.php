@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
- * Class SettingController
+ * Class SettingController.
  */
 class SettingController extends Controller
 {
@@ -22,6 +22,7 @@ class SettingController extends Controller
      * @param \Illuminate\Http\Request $request
      *
      * @return mixed
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)

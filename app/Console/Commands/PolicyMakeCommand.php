@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-
 use Illuminate\Support\Str;
 
 class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
@@ -42,7 +41,7 @@ class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
 
         $this->makeDirectory($path);
 
-        $stub = $this->files->get(__DIR__.'/stubs/abstract-policy.stub');
+        $stub = $this->files->get(__DIR__ . '/stubs/abstract-policy.stub');
 
         $this->files->put($path, $this->replaceNamespace($stub, $name)->replaceClass($stub, $name));
 

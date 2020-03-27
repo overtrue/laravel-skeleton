@@ -17,7 +17,7 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
             return parent::getStub();
         }
 
-        return __DIR__.'/stubs/model.stub';
+        return __DIR__ . '/stubs/model.stub';
     }
 
     public function handle()

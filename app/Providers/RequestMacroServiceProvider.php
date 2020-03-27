@@ -14,8 +14,9 @@ class RequestMacroServiceProvider extends ServiceProvider
     {
         $this->registerModelRelationIncludes();
     }
+
     /**
-     * 请求加载的模型关系
+     * 请求加载的模型关系.
      */
     protected function registerModelRelationIncludes()
     {
@@ -24,6 +25,7 @@ class RequestMacroServiceProvider extends ServiceProvider
             if ($request->has('include')) {
                 return array_filter(\array_map('trim', \explode(';', $request->get('include'))));
             }
+
             return [];
         });
     }

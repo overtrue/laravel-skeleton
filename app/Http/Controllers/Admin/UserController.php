@@ -30,6 +30,7 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\Resources\Json\Resource
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
@@ -46,7 +47,7 @@ class UserController extends Controller
             'phone' => [
                 'required',
                 'unique:users',
-                new Phone,
+                new Phone(),
             ],
         ]);
 
@@ -80,6 +81,7 @@ class UserController extends Controller
      * @param \App\User $user
      *
      * @return \Illuminate\Http\Response
+     *
      * @throws \Exception
      */
     public function destroy(User $user)

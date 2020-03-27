@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -26,6 +26,7 @@ class LoginController extends Controller
      * @param \Illuminate\Http\Request $request
      *
      * @return array
+     *
      * @throws \Illuminate\Validation\ValidationException
      */
     public function __invoke(Request $request)
@@ -40,9 +41,7 @@ class LoginController extends Controller
         $user = User::where('username', $request->username)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
+            throw ValidationException::withMessages(['email' => ['The provided credentials are incorrect.']]);
         }
 
         return $user->createDeviceToken($request->get('device_name'));
