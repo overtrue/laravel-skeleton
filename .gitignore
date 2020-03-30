@@ -24,3 +24,4 @@ package-lock.json
 .phpstorm.meta.php
 _ide_helper.php
 cghooks.lock
+hooks
