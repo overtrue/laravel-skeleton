@@ -974,16 +974,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "f3d45b92d4187ea5eb37f82c1a0dce23c9b0b17a"
+                "reference": "db08870ae5ed1324ce6ecd4be5f8422a121ed570"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/f3d45b92d4187ea5eb37f82c1a0dce23c9b0b17a",
-                "reference": "f3d45b92d4187ea5eb37f82c1a0dce23c9b0b17a",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/db08870ae5ed1324ce6ecd4be5f8422a121ed570",
+                "reference": "db08870ae5ed1324ce6ecd4be5f8422a121ed570",
                 "shasum": ""
             },
             "require": {
@@ -1030,7 +1030,7 @@
                 "laravel",
                 "sanctum"
             ],
-            "time": "2020-03-24T16:01:07+00:00"
+            "time": "2020-04-07T14:55:50+00:00"
         },
         {
             "name": "laravel/socialite",
