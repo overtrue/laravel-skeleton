@@ -56,6 +56,18 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
+  "extra": {
+    "hooks": {
+      "pre-commit": [
+        "composer test",
+        "composer fix-style"
+      ],
+      "pre-push": [
+        "composer test",
+        "composer check-style"
+      ]
+    }
+  },
   "scripts": {
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
