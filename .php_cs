@@ -12,6 +12,7 @@ return PhpCsFixer\Config::create()
         'new_with_braces' => true,
         'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
         'no_empty_statement' => true,
+        'no_unused_imports' => true,
         'no_leading_import_slash' => true,
         'no_leading_namespace_whitespace' => true,
         'no_whitespace_in_blank_line' => true,
