@@ -5426,16 +5426,16 @@
         },
         {
             "name": "overtrue/laravel-query-logger",
-            "version": "1.0.8",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-query-logger.git",
-                "reference": "841d6eea45fa503c2ba7227ee7d1e3a0bfe09b74"
+                "reference": "651b7ff26a8f07f23c8dc6cac2993e4c1c570aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-query-logger/zipball/841d6eea45fa503c2ba7227ee7d1e3a0bfe09b74",
-                "reference": "841d6eea45fa503c2ba7227ee7d1e3a0bfe09b74",
+                "url": "https://api.github.com/repos/overtrue/laravel-query-logger/zipball/651b7ff26a8f07f23c8dc6cac2993e4c1c570aa5",
+                "reference": "651b7ff26a8f07f23c8dc6cac2993e4c1c570aa5",
                 "shasum": ""
             },
             "require": {
@@ -5446,6 +5446,16 @@
                 "laravel": {
                     "providers": [
                         "Overtrue\\LaravelQueryLogger\\ServiceProvider"
+                    ]
+                },
+                "hooks": {
+                    "pre-commit": [
+                        "composer test",
+                        "composer fix-style"
+                    ],
+                    "pre-push": [
+                        "composer test",
+                        "composer check-style"
                     ]
                 }
             },
@@ -5465,7 +5475,7 @@
                 }
             ],
             "description": "A dev tool to log all queries for laravel application.",
-            "time": "2020-03-04T15:20:58+00:00"
+            "time": "2020-05-15T04:09:30+00:00"
         },
         {
             "name": "paragonie/random_compat",
