@@ -17,6 +17,8 @@ class SettingController extends Controller
 
     /**
      * @param string $key
+     *
+     * @return mixed|void
      */
     public function show(string $key)
     {

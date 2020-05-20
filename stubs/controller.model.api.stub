@@ -1,0 +1,90 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespacedModel }};
+use Illuminate\Http\Request;
+use App\Http\Resources\Resource;
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{ class }} extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function index()
+    {
+        return Resource::collection({{ model }}::latest()->paginate($request->get('per_page')));
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     *
+     * @return \App\Http\Resources\Resource
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function store(Request $request)
+    {
+        $this->authorize('create', {{ model }}::class);
+
+        $this->validate($request, [
+            //...
+        ]);
+
+        return new Resource({{ model }}::create($request->all()));
+    }
+
+    /**
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     *
+     * @return \App\Http\Resources\Resource
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show({{ model }} ${{ modelVariable }})
+    {
+        $this->authorize('view', ${{ modelVariable }});
+
+        return new Resource(${{ modelVariable }});
+    }
+
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     *
+     * @return \App\Http\Resources\Resource
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update(Request $request, {{ model }} ${{ modelVariable }})
+    {
+        $this->authorize('update', ${{ modelVariable }});
+
+        $this->validate($request, [
+            //...
+        ]);
+
+        ${{ modelVariable }}->update($request->all());
+
+        return new Resource(${{ modelVariable }});
+    }
+
+    /**
+     * @param  \{{ namespacedModel }}  ${{ modelVariable }}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{ model }} ${{ modelVariable }})
+    {
+        $this->authorize('delete', ${{ modelVariable }});
+
+        ${{ modelVariable }}->delete();
+
+        return response()->noContent();
+    }
+}
