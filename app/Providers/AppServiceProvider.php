@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Resources\Resource;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,11 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->runningUnitTests()) {
-            Schema::defaultStringLength(191);
-        }
-
-        Resource::withoutWrapping();
+        JsonResource::withoutWrapping();
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\User;
-use Laravel\Airlock\Airlock;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
@@ -25,16 +25,16 @@ class LoginTest extends TestCase
             'username' => $this->user->username,
             'password' => 'password',
         ])
-        ->assertSuccessful()
-        ->assertJsonStructure(['token'])
-        ->assertJson(['token_type' => 'bearer']);
+            ->assertSuccessful()
+            ->assertJsonStructure(['token'])
+            ->assertJson(['token_type' => 'bearer']);
     }
 
     /** @test */
     public function fetch_the_current_user()
     {
-        Airlock::actingAs($this->user);
-            $this->getJson('/api/user')
+        Sanctum::actingAs($this->user);
+        $this->getJson('/api/user')
             ->assertSuccessful()
             ->assertJsonStructure(['id', 'name', 'username']);
     }
@@ -47,7 +47,7 @@ class LoginTest extends TestCase
             'password' => 'password',
         ])->json()['token'];
 
-        $headers = ['Authorization' => 'Bearer '.$token];
+        $headers = ['Authorization' => 'Bearer ' . $token];
 
         $this->withHeaders($headers)->postJson("/api/logout")
             ->assertSuccessful();

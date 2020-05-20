@@ -4,7 +4,6 @@ namespace App\Traits;
 
 use App\Pivots\MorphPivotWithCreator;
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Trait HasAdmins.

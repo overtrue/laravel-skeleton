@@ -9,10 +9,10 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": "^7.2",
+    "php": "^7.4",
     "ext-json": "*",
     "fideloper/proxy": "^4.0",
-    "fruitcake/laravel-cors": "^1.0",
+    "fruitcake/laravel-cors": "^2.0",
     "laravel/framework": "^7.1",
     "laravel/sanctum": "^2.0",
     "laravel/socialite": "^4.0",
@@ -33,7 +33,7 @@
     "mockery/mockery": "^1.0",
     "nunomaduro/collision": "^4.1",
     "overtrue/laravel-query-logger": "^1.0",
-    "phpunit/phpunit": "^8.5"
+    "phpunit/phpunit": "^9.0"
   },
   "config": {
     "optimize-autoloader": true,
@@ -60,7 +60,7 @@
     "hooks": {
       "pre-commit": [
         "composer test",
-        "composer fix-style"
+        "composer check-style"
       ],
       "pre-push": [
         "composer test",
