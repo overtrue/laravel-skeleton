@@ -30,37 +30,37 @@ class User extends Authenticatable
     use Filterable;
 
     // 性别
-    const GENDER_NONE = 'none';
-    const GENDER_MALE = 'male';
-    const GENDER_FEMALE = 'female';
+    public const GENDER_NONE = 'none';
+    public const GENDER_MALE = 'male';
+    public const GENDER_FEMALE = 'female';
 
     //系统用户Id
-    const SYSTEM_USER_ID = 1;
+    public const SYSTEM_USER_ID = 1;
 
     /**
      * 可以对外输出字段.
      */
-    const SAFE_FIELDS = [
+    public const SAFE_FIELDS = [
         'id', 'name', 'real_name', 'username', 'avatar', 'is_admin',
     ];
 
-    const DEFAULT_AVATAR = '/img/default-avatar.png';
+    public const DEFAULT_AVATAR = '/img/default-avatar.png';
 
-    const STATUS_ACTIVE = 'active';
-    const STATUS_INACTIVATED = 'inactivated';
-    const STATUS_FROZEN = 'frozen';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_INACTIVATED = 'inactivated';
+    public const STATUS_FROZEN = 'frozen';
 
-    const STATUS_LABELS = [
+    public const STATUS_LABELS = [
         self::STATUS_INACTIVATED => '未激活',
         self::STATUS_ACTIVE => '正常',
         self::STATUS_FROZEN => '已冻结',
     ];
 
     // 默认缓存信息
-    const DEFAULT_CACHE = [];
+    public const DEFAULT_CACHE = [];
 
     // 默认设置信息
-    const DEFAULT_SETTINGS = [];
+    public const DEFAULT_SETTINGS = [];
 
     /**
      * The attributes that are mass assignable.

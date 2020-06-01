@@ -4,6 +4,6 @@ namespace App;
 
 class Device
 {
-    const PC = 'pc';
+    public const PC = 'pc';
     //const MINIAPP = 'miniapp';
 }
