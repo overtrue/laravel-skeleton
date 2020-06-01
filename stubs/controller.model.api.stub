@@ -6,13 +6,11 @@ use {{ namespacedModel }};
 use Illuminate\Http\Request;
 use App\Http\Resources\Resource;
 use {{ rootNamespace }}Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class {{ class }} extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
@@ -22,9 +20,7 @@ class {{ class }} extends Controller
 
     /**
      * @param  \Illuminate\Http\Request  $request
-     *
      * @return \App\Http\Resources\Resource
-     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -41,9 +37,7 @@ class {{ class }} extends Controller
 
     /**
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     *
      * @return \App\Http\Resources\Resource
-     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show({{ model }} ${{ modelVariable }})
@@ -56,9 +50,7 @@ class {{ class }} extends Controller
     /**
      * @param  \Illuminate\Http\Request  $request
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     *
      * @return \App\Http\Resources\Resource
-     *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
