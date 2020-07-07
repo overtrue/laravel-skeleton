@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea9457d5bfb1519a6c9f8d52d5a1fc4a",
+    "content-hash": "b05dc1bee4303fac519d36494962898c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -112,16 +112,16 @@
         },
         {
             "name": "caouecs/laravel-lang",
-            "version": "4.0.11",
+            "version": "6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c"
+                "reference": "dbbbad7019645f88882b0ab03d51eaedab43917c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
-                "reference": "134e1cbf9be14d97fc7937d7df784eae2d4bfa3c",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/dbbbad7019645f88882b0ab03d51eaedab43917c",
+                "reference": "dbbbad7019645f88882b0ab03d51eaedab43917c",
                 "shasum": ""
             },
             "require": {
@@ -151,7 +151,7 @@
                 "laravel",
                 "lpm"
             ],
-            "time": "2020-03-17T15:24:26+00:00"
+            "time": "2020-06-21T09:04:45+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1667,20 +1667,20 @@
         },
         {
             "name": "overtrue/laravel-lang",
-            "version": "3.0.18",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-lang.git",
-                "reference": "d69824be235f6142e3e4226d9918da76e4727774"
+                "reference": "dd071356d066e05f6151bae2dd8c9fe0bb506061"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/d69824be235f6142e3e4226d9918da76e4727774",
-                "reference": "d69824be235f6142e3e4226d9918da76e4727774",
+                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/dd071356d066e05f6151bae2dd8c9fe0bb506061",
+                "reference": "dd071356d066e05f6151bae2dd8c9fe0bb506061",
                 "shasum": ""
             },
             "require": {
-                "caouecs/laravel-lang": "~4.0",
+                "caouecs/laravel-lang": "~6.0",
                 "symfony/process": "^5.0.0"
             },
             "require-dev": {
@@ -1726,7 +1726,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-06T02:39:28+00:00"
+            "time": "2020-03-17T23:56:43+00:00"
         },
         {
             "name": "overtrue/laravel-options",
