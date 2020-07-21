@@ -112,23 +112,22 @@
         },
         {
             "name": "caouecs/laravel-lang",
-            "version": "6.0.3",
+            "version": "7.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "dbbbad7019645f88882b0ab03d51eaedab43917c"
+                "reference": "fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/dbbbad7019645f88882b0ab03d51eaedab43917c",
-                "reference": "dbbbad7019645f88882b0ab03d51eaedab43917c",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8",
+                "reference": "fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*"
             },
             "suggest": {
-                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
                 "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
                 "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
                 "overtrue/laravel-lang": "Command to add languages in your project"
@@ -151,7 +150,7 @@
                 "laravel",
                 "lpm"
             ],
-            "time": "2020-06-21T09:04:45+00:00"
+            "time": "2020-07-14T08:27:14+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1673,20 +1672,20 @@
         },
         {
             "name": "overtrue/laravel-lang",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-lang.git",
-                "reference": "dd071356d066e05f6151bae2dd8c9fe0bb506061"
+                "reference": "8622a7d41fa52c502acaf63a4c416e849e02dfc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/dd071356d066e05f6151bae2dd8c9fe0bb506061",
-                "reference": "dd071356d066e05f6151bae2dd8c9fe0bb506061",
+                "url": "https://api.github.com/repos/overtrue/laravel-lang/zipball/8622a7d41fa52c502acaf63a4c416e849e02dfc7",
+                "reference": "8622a7d41fa52c502acaf63a4c416e849e02dfc7",
                 "shasum": ""
             },
             "require": {
-                "caouecs/laravel-lang": "~6.0",
+                "caouecs/laravel-lang": "~7.0",
                 "symfony/process": "^5.0.0"
             },
             "require-dev": {
@@ -1732,7 +1731,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-17T23:56:43+00:00"
+            "time": "2020-07-21T06:36:31+00:00"
         },
         {
             "name": "overtrue/laravel-options",
@@ -3873,16 +3872,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2"
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/4a5b6bba3259902e386eb80dd1956181ee90b5b2",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/d87d5766cbf48d72388a9f6b85f280c8ad51f981",
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981",
                 "shasum": ""
             },
             "require": {
@@ -3891,7 +3890,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -3949,7 +3948,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/process",
