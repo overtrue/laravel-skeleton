@@ -119,7 +119,7 @@ public function filterTitle($query, $keyword)
 > 当然，你也可以定义模型中不存在的字段。  
 
 ### 静默更新
-我们有时候会想更新数据库中的记录，但是不希望出发 `updated_at` 更新，则可以在模型引入 `App\Traits\QuietlySave` 或者 `App\Traits\QuietlyUpdate` 这两个 trait：
+我们有时候会想更新数据库中的记录，但是不希望触发 `updated_at` 更新，则可以在模型引入 `App\Traits\QuietlySave` 或者 `App\Traits\QuietlyUpdate` 这两个 trait：
 
 ```php
 // App\Traits\QuietlySave
