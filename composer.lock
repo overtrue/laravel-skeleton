@@ -115,12 +115,12 @@
             "version": "7.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "url": "https://github.com/caouecs/lang.git",
                 "reference": "fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8",
+                "url": "https://api.github.com/repos/caouecs/lang/zipball/fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8",
                 "reference": "fe2872f7c2dd19afb11d83443a81ac9e8e4cb2b8",
                 "shasum": ""
             },
@@ -150,6 +150,7 @@
                 "laravel",
                 "lpm"
             ],
+            "abandoned": "https://github.com/Laravel-Lang/lang",
             "time": "2020-07-14T08:27:14+00:00"
         },
         {
@@ -943,16 +944,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.5.0",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "ab84ea1bda5a1c65bf00dac0fdc07b3d59ad58a9"
+                "reference": "a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/ab84ea1bda5a1c65bf00dac0fdc07b3d59ad58a9",
-                "reference": "ab84ea1bda5a1c65bf00dac0fdc07b3d59ad58a9",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e",
+                "reference": "a38ffd5f419dbaaefc4cb81c1bdde12a02c4854e",
                 "shasum": ""
             },
             "require": {
@@ -999,7 +1000,7 @@
                 "laravel",
                 "sanctum"
             ],
-            "time": "2020-08-25T18:01:25+00:00"
+            "time": "2020-09-01T13:48:09+00:00"
         },
         {
             "name": "laravel/socialite",
