@@ -2598,16 +2598,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.1.4",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "51ff337ce194bdc3d8db12b20ce8cd54ac9f71e9"
+                "reference": "186f395b256065ba9b890c0a4e48a91d598fa2cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/51ff337ce194bdc3d8db12b20ce8cd54ac9f71e9",
-                "reference": "51ff337ce194bdc3d8db12b20ce8cd54ac9f71e9",
+                "url": "https://api.github.com/repos/symfony/console/zipball/186f395b256065ba9b890c0a4e48a91d598fa2cf",
+                "reference": "186f395b256065ba9b890c0a4e48a91d598fa2cf",
                 "shasum": ""
             },
             "require": {
@@ -2687,7 +2687,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-08-17T13:51:41+00:00"
+            "time": "2020-09-02T07:07:40+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -3055,7 +3055,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.1.4",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -4163,7 +4163,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.1.4",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -4395,7 +4395,7 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.1.4",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
@@ -4932,42 +4932,43 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-ide-helper",
-            "version": "v2.8.0",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-ide-helper.git",
-                "reference": "ba95d18ef55c91295250ae8b7bfa73d8fb866b9b"
+                "reference": "affa55122f83575888d4ebf1728992686e8223de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/ba95d18ef55c91295250ae8b7bfa73d8fb866b9b",
-                "reference": "ba95d18ef55c91295250ae8b7bfa73d8fb866b9b",
+                "url": "https://api.github.com/repos/barryvdh/laravel-ide-helper/zipball/affa55122f83575888d4ebf1728992686e8223de",
+                "reference": "affa55122f83575888d4ebf1728992686e8223de",
                 "shasum": ""
             },
             "require": {
                 "barryvdh/reflection-docblock": "^2.0.6",
                 "composer/composer": "^1.6 || ^2.0@dev",
                 "doctrine/dbal": "~2.3",
-                "illuminate/console": "^5.5 || ^6 || ^7",
-                "illuminate/filesystem": "^5.5 || ^6 || ^7",
-                "illuminate/support": "^5.5 || ^6 || ^7",
+                "ext-json": "*",
+                "illuminate/console": "^6 || ^7 || ^8",
+                "illuminate/filesystem": "^6 || ^7 || ^8",
+                "illuminate/support": "^6 || ^7 || ^8",
                 "php": ">=7.2",
                 "phpdocumentor/type-resolver": "^1.1.0"
             },
             "require-dev": {
-                "illuminate/config": "^5.5 || ^6 || ^7",
-                "illuminate/view": "^5.5 || ^6 || ^7",
+                "friendsofphp/php-cs-fixer": "^2",
+                "illuminate/config": "^6 || ^7 || ^8",
+                "illuminate/view": "^6 || ^7 || ^8",
                 "mockery/mockery": "^1.3",
-                "orchestra/testbench": "^3.5 || ^4 || ^5",
-                "phpro/grumphp": "^0.19.0",
+                "orchestra/testbench": "^4 || ^5 || ^6",
+                "phpunit/phpunit": "^8.5 || ^9",
                 "spatie/phpunit-snapshot-assertions": "^1.4 || ^2.2 || ^3",
-                "squizlabs/php_codesniffer": "^3.5",
                 "vimeo/psalm": "^3.12"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev"
+                    "dev-master": "2.8-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -5008,7 +5009,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-10T08:22:48+00:00"
+            "time": "2020-09-07T07:36:37+00:00"
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -5191,16 +5192,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.7",
+            "version": "1.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "95c63ab2117a72f48f5a55da9740a3273d45b7fd"
+                "reference": "8a7ecad675253e4654ea05505233285377405215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/95c63ab2117a72f48f5a55da9740a3273d45b7fd",
-                "reference": "95c63ab2117a72f48f5a55da9740a3273d45b7fd",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/8a7ecad675253e4654ea05505233285377405215",
+                "reference": "8a7ecad675253e4654ea05505233285377405215",
                 "shasum": ""
             },
             "require": {
@@ -5249,11 +5250,15 @@
                     "type": "custom"
                 },
                 {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/composer/composer",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-08T08:27:21+00:00"
+            "time": "2020-08-23T12:54:47+00:00"
         },
         {
             "name": "composer/composer",
@@ -5486,16 +5491,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51"
+                "reference": "ebd27a9866ae8254e873866f795491f02418c5a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51",
-                "reference": "fa2aaf99e2087f013a14f7432c1cd2dd7d8f1f51",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/ebd27a9866ae8254e873866f795491f02418c5a5",
+                "reference": "ebd27a9866ae8254e873866f795491f02418c5a5",
                 "shasum": ""
             },
             "require": {
@@ -5540,7 +5545,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-06-04T11:16:35+00:00"
+            "time": "2020-08-19T10:27:58+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -8476,16 +8481,16 @@
         },
         {
             "name": "seld/jsonlint",
-            "version": "1.8.0",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/jsonlint.git",
-                "reference": "ff2aa5420bfbc296cf6a0bc785fa5b35736de7c1"
+                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/ff2aa5420bfbc296cf6a0bc785fa5b35736de7c1",
-                "reference": "ff2aa5420bfbc296cf6a0bc785fa5b35736de7c1",
+                "url": "https://api.github.com/repos/Seldaek/jsonlint/zipball/590cfec960b77fd55e39b7d9246659e95dd6d337",
+                "reference": "590cfec960b77fd55e39b7d9246659e95dd6d337",
                 "shasum": ""
             },
             "require": {
@@ -8531,7 +8536,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-30T19:05:18+00:00"
+            "time": "2020-08-25T06:56:57+00:00"
         },
         {
             "name": "seld/phar-utils",
@@ -8579,16 +8584,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.1.3",
+            "version": "v5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "6e4320f06d5f2cce0d96530162491f4465179157"
+                "reference": "f7b9ed6142a34252d219801d9767dedbd711da1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/6e4320f06d5f2cce0d96530162491f4465179157",
-                "reference": "6e4320f06d5f2cce0d96530162491f4465179157",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/f7b9ed6142a34252d219801d9767dedbd711da1a",
+                "reference": "f7b9ed6142a34252d219801d9767dedbd711da1a",
                 "shasum": ""
             },
             "require": {
@@ -8639,7 +8644,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-30T20:35:19+00:00"
+            "time": "2020-08-21T17:19:47+00:00"
         },
         {
             "name": "symfony/options-resolver",
