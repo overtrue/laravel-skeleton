@@ -36,24 +36,9 @@ class Handler extends ExceptionHandler
      *
      * @throws \Exception
      */
-    public function report(\Throwable $exception)
+    public function register()
     {
-        parent::report($exception);
-    }
-
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Throwable               $exception
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
-     */
-    public function render($request, \Throwable $exception)
-    {
-        return parent::render($request, $exception);
+        //
     }
 
     /**

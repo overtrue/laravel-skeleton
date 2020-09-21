@@ -12,14 +12,18 @@ class RedirectIfAuthenticated
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure                 $next
-     * @param string|null              $guard
+     * @param array                    $guards
      *
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::guard($guard)->check()) {
-            return response()->json(['error' => 'Already authenticated.'], 400);
+        $guards = empty($guards) ? [null] : $guards;
+
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                return response()->json(['error' => 'Already authenticated.'], 400);
+            }
         }
 
         return $next($request);

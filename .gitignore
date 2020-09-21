@@ -25,3 +25,4 @@ package-lock.json
 _ide_helper.php
 cghooks.lock
 hooks
+.env.backup

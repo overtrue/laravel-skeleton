@@ -14,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class User.
@@ -28,6 +29,7 @@ class User extends Authenticatable
     use HasCacheProperty;
     use HasExtendsProperty;
     use Filterable;
+    use HasFactory;
 
     // 性别
     public const GENDER_NONE = 'none';

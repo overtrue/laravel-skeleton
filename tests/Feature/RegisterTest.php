@@ -23,7 +23,7 @@ class RegisterTest extends TestCase
     /** @test */
     public function can_not_register_with_existing_username()
     {
-        factory(User::class)->create(['username' => 'test@test.app']);
+        User::factory()->create(['username' => 'test@test.app']);
 
         $this->postJson('/api/register', [
             'name' => 'Test User',

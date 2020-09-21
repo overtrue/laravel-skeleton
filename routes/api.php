@@ -11,20 +11,25 @@
 |
 */
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/settings', 'SettingController@index');
+Route::get('/settings', [SettingController::class, 'index']);
 
-Route::post('/login', 'Auth\LoginController');
-Route::post('/logout', 'Auth\LogoutController');
-Route::post('/register', 'Auth\RegisterController');
+Route::post('/login', LoginController::class);
+Route::post('/logout', LogoutController::class);
+Route::post('/register', RegisterController::class);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::get('/user', 'UserController@user');
+    Route::get('/user', [UserController::class, 'user']);
 
     // admin
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
-        Route::resource('users', 'UserController');
-        Route::resource('settings', 'SettingController');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::resource('users', UserController::class);
+        Route::resource('settings', SettingController::class);
     });
 });

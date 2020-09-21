@@ -13,12 +13,12 @@
     "ext-json": "*",
     "fideloper/proxy": "^4.0",
     "fruitcake/laravel-cors": "^2.0",
-    "laravel/framework": "^7.1",
+    "laravel/framework": "^8.5",
     "laravel/sanctum": "^2.0",
-    "laravel/socialite": "^4.0",
     "laravel/tinker": "^2.0",
+    "guzzlehttp/guzzle": "^7.0.1",
     "overtrue/laravel-lang": "^3.0",
-    "overtrue/laravel-options": "^1.0",
+    "overtrue/laravel-options": "^2.0",
     "predis/predis": "^1.1"
   },
   "require-dev": {
@@ -27,13 +27,12 @@
     "brainmaestro/composer-git-hooks": "^2.7",
     "friendsofphp/php-cs-fixer": "^2.15",
     "doctrine/dbal": "^2.9",
-    "facade/ignition": "^2.0",
-    "fzaninotto/faker": "^1.4",
-    "guzzlehttp/guzzle": "^6.3",
+    "facade/ignition": "^2.3.6",
+    "fzaninotto/faker": "^1.9.1",
     "mockery/mockery": "^1.0",
-    "nunomaduro/collision": "^4.1",
-    "overtrue/laravel-query-logger": "^1.0",
-    "phpunit/phpunit": "^9.0"
+    "nunomaduro/collision": "^5.0",
+    "overtrue/laravel-query-logger": "^2.0",
+    "phpunit/phpunit": "^9.3"
   },
   "config": {
     "optimize-autoloader": true,
@@ -42,12 +41,10 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "app/",
+      "Database\\Factories\\": "database/factories/",
+      "Database\\Seeders\\": "database/seeders/"
     },
-    "classmap": [
-      "database/seeds",
-      "database/factories"
-    ],
     "files": [
       "./bootstrap/helpers.php"
     ]
