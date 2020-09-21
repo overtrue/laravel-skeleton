@@ -11,7 +11,7 @@ use App\User;
  */
 trait BelongsToCreator
 {
-    public static function bootHasCreator()
+    public static function bootBelongsToCreator()
     {
         static::saving(function ($model) {
             $model->creator_id = $model->creator_id ?? \auth()->id() ?? User::SYSTEM_USER_ID;
