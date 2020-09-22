@@ -92,7 +92,6 @@ class User extends Authenticatable
     protected $casts = [
         'id' => 'int',
         'creator_id' => 'int',
-        'phone' => 'int',
         'cache' => 'array',
         'extends' => 'array',
         'settings' => 'array',

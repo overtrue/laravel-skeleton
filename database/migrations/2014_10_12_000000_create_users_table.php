@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('gender')->default('none')->comment('性别：none/female/male');
-            $table->unsignedBigInteger('phone')->unique()->nullable();
+            $table->string('phone')->unique()->nullable();
             $table->date('birthday')->nullable();
             $table->string('password')->nullable();
             $table->string('status')->default('inactivated')->comment('状态：inactivated/active/frozen');
