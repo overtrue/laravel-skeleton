@@ -4,23 +4,22 @@ namespace {{ namespace }};
 
 use {{ namespacedModel }};
 use Illuminate\Http\Request;
-use App\Http\Resources\Resource;
 use {{ rootNamespace }}Http\Controllers\Controller;
 
 class {{ class }} extends Controller
 {
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Resource::collection({{ model }}::latest()->paginate($request->get('per_page')));
+        return {{ model }}::latest()->paginate($request->get('per_page'));
     }
 
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @return \App\Http\Resources\Resource
+     * @return \{{ namespacedModel }}
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -32,25 +31,25 @@ class {{ class }} extends Controller
             //...
         ]);
 
-        return new Resource({{ model }}::create($request->all()));
+        return {{ model }}::create($request->all());
     }
 
     /**
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     * @return \App\Http\Resources\Resource
+     * @return \{{ namespacedModel }}
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function show({{ model }} ${{ modelVariable }})
     {
         $this->authorize('view', ${{ modelVariable }});
 
-        return new Resource(${{ modelVariable }});
+        return ${{ modelVariable }};
     }
 
     /**
      * @param  \Illuminate\Http\Request  $request
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
-     * @return \App\Http\Resources\Resource
+     * @return \{{ namespacedModel }}
      * @throws \Illuminate\Auth\Access\AuthorizationException
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -64,12 +63,13 @@ class {{ class }} extends Controller
 
         ${{ modelVariable }}->update($request->all());
 
-        return new Resource(${{ modelVariable }});
+        return ${{ modelVariable }};
     }
 
     /**
      * @param  \{{ namespacedModel }}  ${{ modelVariable }}
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy({{ model }} ${{ modelVariable }})
     {

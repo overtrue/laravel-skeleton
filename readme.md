@@ -39,6 +39,17 @@ $ php artisan migrate --seed
 
 ## 使用
 
+### 创建新模块
+
+```shell script
+$ php artisan make:model Post -a --api
+# Model created successfully.
+# Factory created successfully.
+# Created Migration: 2020_09_22_150134_create_posts_table
+# Seeder created successfully.
+# Controller created successfully.
+```
+
 ### 模型关系加载
 我们可以在前端请求时动态决定接口返回哪些模型关系，例如 `User` 模型有一个 `posts` 关系，我们的用户列表控制器如下 `UserController@index`:
 
