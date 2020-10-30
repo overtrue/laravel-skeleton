@@ -874,16 +874,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.12.2",
+            "version": "v8.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "aa81c2e5a0ba8048a6f0486e4570df74a508a6c9"
+                "reference": "6707480c5f0db7aa07537f9ad93255b64b65b85e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/aa81c2e5a0ba8048a6f0486e4570df74a508a6c9",
-                "reference": "aa81c2e5a0ba8048a6f0486e4570df74a508a6c9",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6707480c5f0db7aa07537f9ad93255b64b65b85e",
+                "reference": "6707480c5f0db7aa07537f9ad93255b64b65b85e",
                 "shasum": ""
             },
             "require": {
@@ -1033,7 +1033,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-10-29T18:57:56+00:00"
+            "time": "2020-10-29T22:01:29+00:00"
         },
         {
             "name": "laravel/sanctum",
