@@ -92,7 +92,7 @@
     "cghooks": "vendor/bin/cghooks",
     "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php_cs --dry-run --ansi",
     "fix-style": "php-cs-fixer fix --using-cache=no --config=.php_cs --ansi",
-    "test": "vendor/bin/phpunit --testdox"
+    "test": "@php artisan test"
   },
   "scripts-descriptions": {
     "test": "Run all tests.",
