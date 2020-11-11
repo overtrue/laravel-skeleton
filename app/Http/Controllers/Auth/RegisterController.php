@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -30,7 +30,7 @@ class RegisterController extends Controller
             'password' => 'required',
         ]);
 
-        /* @var \App\User $user */
+        /* @var \App\Models\User $user */
         $user = User::create($request->all());
 
         return $user->createDeviceToken($request->get('device_name'));

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
 /**
- * Trait Filterable.
+ * @method static filter(array $input = [])
  */
 trait Filterable
 {

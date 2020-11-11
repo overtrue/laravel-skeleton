@@ -11,28 +11,28 @@
   "require": {
     "php": "^7.4",
     "ext-json": "*",
-    "fideloper/proxy": "^4.0",
-    "fruitcake/laravel-cors": "^2.0",
-    "laravel/framework": "^8.5",
-    "laravel/sanctum": "^2.0",
-    "laravel/tinker": "^2.0",
-    "guzzlehttp/guzzle": "^7.0.1",
-    "overtrue/laravel-lang": "^4.0",
-    "overtrue/laravel-options": "^2.0",
-    "predis/predis": "^1.1"
+    "fideloper/proxy": "^4.4.1",
+    "fruitcake/laravel-cors": "^2.0.3",
+    "laravel/framework": "^8.14.0",
+    "laravel/sanctum": "^2.8.0",
+    "laravel/tinker": "^2.5.0",
+    "guzzlehttp/guzzle": "^7.2.0",
+    "overtrue/laravel-lang": "^4.1.1",
+    "overtrue/laravel-options": "^2.0.0",
+    "predis/predis": "^1.1.6"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.6",
-    "beyondcode/laravel-dump-server": "^1.0",
-    "brainmaestro/composer-git-hooks": "^2.7",
-    "friendsofphp/php-cs-fixer": "^2.15",
-    "doctrine/dbal": "^2.9",
-    "facade/ignition": "^2.3.6",
+    "barryvdh/laravel-ide-helper": "^2.8.1",
+    "beyondcode/laravel-dump-server": "^1.6.0",
+    "brainmaestro/composer-git-hooks": "^2.8.3",
+    "friendsofphp/php-cs-fixer": "^2.16.7",
+    "doctrine/dbal": "^2.12.0",
+    "facade/ignition": "^2.5.0",
     "fzaninotto/faker": "^1.9.1",
-    "mockery/mockery": "^1.0",
-    "nunomaduro/collision": "^5.0",
-    "overtrue/laravel-query-logger": "^2.0",
-    "phpunit/phpunit": "^9.3"
+    "mockery/mockery": "^1.4.2",
+    "nunomaduro/collision": "^5.1.0",
+    "overtrue/laravel-query-logger": "^2.0.1",
+    "phpunit/phpunit": "^9.4.3"
   },
   "config": {
     "optimize-autoloader": true,
@@ -92,7 +92,7 @@
     "cghooks": "vendor/bin/cghooks",
     "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php_cs --dry-run --ansi",
     "fix-style": "php-cs-fixer fix --using-cache=no --config=.php_cs --ansi",
-    "test": "vendor/bin/phpunit"
+    "test": "vendor/bin/phpunit --testdox"
   },
   "scripts-descriptions": {
     "test": "Run all tests.",

@@ -2,7 +2,7 @@
 
 namespace App\Pivots;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 
 /**

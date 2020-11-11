@@ -2,12 +2,12 @@
 
 namespace App\Traits;
 
-use App\User;
+use App\Models\User;
 
 /**
  * Trait BelongsToUser.
  *
- * @property \App\User $user
+ * @property \App\Models\User $user
  */
 trait BelongsToUser
 {
@@ -29,7 +29,7 @@ trait BelongsToUser
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return bool
      */

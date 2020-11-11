@@ -2,12 +2,12 @@
 
 namespace App\Traits;
 
-use App\User;
+use App\Models\User;
 
 /**
  * Trait HasCreator.
  *
- * @property \App\User $creator
+ * @property \App\Models\User $creator
  */
 trait BelongsToCreator
 {
@@ -27,7 +27,7 @@ trait BelongsToCreator
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return bool
      */

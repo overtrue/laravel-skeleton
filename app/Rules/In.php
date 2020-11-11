@@ -4,11 +4,6 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-/**
- * Class In.
- *
- * @author artisan <artisan@tencent.com>
- */
 class In implements Rule
 {
     /**

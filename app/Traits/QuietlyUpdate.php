@@ -2,9 +2,6 @@
 
 namespace App\Traits;
 
-/**
- * Trait QuietlyUpdate.
- */
 trait QuietlyUpdate
 {
     /**

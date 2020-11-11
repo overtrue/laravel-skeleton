@@ -2,9 +2,6 @@
 
 namespace App\Traits;
 
-/**
- * Trait QuietlySave.
- */
 trait QuietlySave
 {
     /**

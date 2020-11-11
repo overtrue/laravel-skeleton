@@ -5,11 +5,6 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
-/**
- * Class Polymorphic.
- *
- * @author artisan <artisan@tencent.com>
- */
 class Polymorphic implements Rule
 {
     /**

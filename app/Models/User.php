@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-/**
- * Class User.
- */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -169,6 +166,16 @@ class User extends Authenticatable
         return self::STATUS_LABELS[$this->status ?? self::STATUS_ACTIVE];
     }
 
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    public function isNotAdmin()
+    {
+        return !$this->is_admin;
+    }
+
     public function filterSearch($query, $keyword)
     {
         $keyword = \sprintf('%%%s%%', $keyword);
@@ -177,7 +184,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param string $device
+     * @param  string|null  $device
      *
      * @return array
      */

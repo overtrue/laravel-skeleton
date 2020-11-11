@@ -5,9 +5,7 @@ namespace App\Traits;
 use Illuminate\Support\Fluent;
 
 /**
- * Trait HasExtendsProperty.
- *
- * @property array $extends
+ * @property \Illuminate\Support\Fluent $extends
  */
 trait HasExtendsProperty
 {
@@ -16,7 +14,7 @@ trait HasExtendsProperty
      */
     public function setExtendsAttribute($extends)
     {
-        $this->attributes['extends'] = json_encode(\array_replace_recursive($this->getExtends(), $extends));
+        $this->attributes['extends'] = json_encode($extends);
     }
 
     /**

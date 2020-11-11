@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use App\Pivots\MorphPivotWithCreator;
-use App\User;
+use App\Models\User;
 
 /**
  * Trait HasAdmins.
@@ -43,7 +43,7 @@ trait HasAdmins
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return array
      */
@@ -53,7 +53,7 @@ trait HasAdmins
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return int
      */
@@ -63,7 +63,7 @@ trait HasAdmins
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return bool
      */
@@ -91,7 +91,7 @@ trait HasAdmins
     }
 
     /**
-     * @param \App\User|int $admin
+     * @param \App\Models\User|int $admin
      *
      * @return array|int
      */
@@ -105,7 +105,7 @@ trait HasAdmins
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return bool
      */
@@ -119,7 +119,7 @@ trait HasAdmins
     }
 
     /**
-     * @param \App\User|int $user
+     * @param \App\Models\User|int $user
      *
      * @return bool
      */

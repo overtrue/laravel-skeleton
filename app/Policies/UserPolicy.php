@@ -2,18 +2,15 @@
 
 namespace App\Policies;
 
-use App\User;
+use App\Models\User;
 
-/**
- * Class UserPolicy.
- */
 class UserPolicy extends Policy
 {
     /**
      * Determine whether the user can view the user.
      *
-     * @param \App\User $user
-     * @param \App\User $targetUser
+     * @param \App\Models\User $user
+     * @param \App\Models\User $targetUser
      *
      * @return mixed
      */
@@ -25,7 +22,7 @@ class UserPolicy extends Policy
     /**
      * Determine whether the user can create users.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      *
      * @return mixed
      */
@@ -37,8 +34,8 @@ class UserPolicy extends Policy
     /**
      * Determine whether the user can update the user.
      *
-     * @param \App\User $user
-     * @param \App\User $targetUser
+     * @param \App\Models\User $user
+     * @param \App\Models\User $targetUser
      *
      * @return mixed
      */
@@ -50,8 +47,8 @@ class UserPolicy extends Policy
     /**
      * Determine whether the user can delete the user.
      *
-     * @param \App\User $user
-     * @param \App\User $targetUser
+     * @param \App\Models\User $user
+     * @param \App\Models\User $targetUser
      *
      * @return mixed
      */
@@ -63,8 +60,8 @@ class UserPolicy extends Policy
     /**
      * Determine whether the user can restore the user.
      *
-     * @param \App\User $user
-     * @param \App\User $targetUser
+     * @param \App\Models\User $user
+     * @param \App\Models\User $targetUser
      *
      * @return mixed
      */
@@ -76,8 +73,8 @@ class UserPolicy extends Policy
     /**
      * Determine whether the user can permanently delete the user.
      *
-     * @param \App\User $user
-     * @param \App\User $targetUser
+     * @param \App\Models\User $user
+     * @param \App\Models\User $targetUser
      *
      * @return mixed
      */

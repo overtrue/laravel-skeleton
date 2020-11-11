@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Admin\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Rules\Phone;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -18,11 +17,9 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::filter($request->all())
+        return User::filter($request->all())
             ->latest()
             ->paginate($request->get('per_page', 20));
-
-        return JsonResource::collection($users);
     }
 
     /**
@@ -49,34 +46,32 @@ class UserController extends Controller
             ],
         ]);
 
-        return new JsonResource(User::create($request->all()));
+        return User::create($request->all());
     }
 
     /**
-     * @param \App\User $user
-     *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @param  \App\Models\User  $user
+     * @return \App\Models\User
      */
     public function show(User $user)
     {
-        return new JsonResource($user->loadMissing(\request()->includes()));
+        return $user->loadMissing(\request()->includes());
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\User                $user
-     *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \App\Models\User
      */
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
 
-        return new JsonResource($user);
+        return $user;
     }
 
     /**
-     * @param \App\User $user
+     * @param \App\Models\User $user
      *
      * @return \Illuminate\Http\Response
      *

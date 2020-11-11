@@ -5,8 +5,6 @@ namespace App\Traits;
 use Illuminate\Support\Fluent;
 
 /**
- * Trait HasSettingsProperty.
- *
  * @property \Illuminate\Support\Fluent $settings
  */
 trait HasSettingsProperty
@@ -16,7 +14,7 @@ trait HasSettingsProperty
      */
     public function setSettingsAttribute($settings)
     {
-        $this->attributes['settings'] = json_encode(\array_replace_recursive($this->getSettings(), $settings));
+        $this->attributes['settings'] = json_encode($settings);
     }
 
     /**

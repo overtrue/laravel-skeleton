@@ -5,7 +5,7 @@ namespace App\Traits;
 use Illuminate\Support\Fluent;
 
 /**
- * Trait HasCacheProperty.
+ * @property \Illuminate\Support\Fluent $cache
  */
 trait HasCacheProperty
 {
@@ -14,7 +14,7 @@ trait HasCacheProperty
      */
     public function setCacheAttribute($cache)
     {
-        $this->attributes['cache'] = json_encode(\array_replace_recursive($this->getCache(), $cache));
+        $this->attributes['cache'] = json_encode($cache);
     }
 
     /**

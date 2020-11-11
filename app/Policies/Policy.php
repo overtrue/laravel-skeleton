@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 abstract class Policy
@@ -11,8 +11,8 @@ abstract class Policy
 
     public function before(User $user)
     {
-        //    if ($user->isAdmin()) {
-    //        return true;
-    //    }
+//        if ($user->isAdmin()) {
+//            return true;
+//        }
     }
 }

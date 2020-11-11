@@ -15,6 +15,6 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        \abort(401);
+        return null;
     }
 }
