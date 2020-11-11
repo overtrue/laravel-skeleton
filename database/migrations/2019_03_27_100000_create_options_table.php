@@ -20,7 +20,7 @@ class CreateOptionsTable extends Migration
     public function up()
     {
         Schema::create('options', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id')->primary();
             $table->string('key')->unique();
             $table->json('value');
             $table->timestamps();

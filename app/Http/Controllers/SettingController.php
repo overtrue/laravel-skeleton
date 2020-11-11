@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-/**
- * Class SettingController.
- */
 class SettingController extends Controller
 {
     /**

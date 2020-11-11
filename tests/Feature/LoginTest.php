@@ -19,7 +19,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function authenticate()
+    public function can_login_with_username_and_password()
     {
         $this->postJson('/api/login', [
             'username' => $this->user->username,
@@ -31,7 +31,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function fetch_the_current_user()
+    public function can_fetch_self()
     {
         Sanctum::actingAs($this->user);
         $this->getJson('/api/user')
@@ -40,7 +40,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function log_out()
+    public function can_logout()
     {
         $token = $this->postJson('/api/login', [
             'username' => $this->user->username,

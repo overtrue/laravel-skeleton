@@ -8,6 +8,7 @@ use App\Traits\Filterable;
 use App\Traits\HasCacheProperty;
 use App\Traits\HasExtendsProperty;
 use App\Traits\HasSettingsProperty;
+use App\Traits\UseUuid;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,6 +28,7 @@ class User extends Authenticatable
     use HasExtendsProperty;
     use Filterable;
     use HasFactory;
+    use UseUuid;
 
     // 性别
     public const GENDER_NONE = 'none';
@@ -87,7 +89,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'id' => 'int',
         'creator_id' => 'int',
         'cache' => 'array',
         'extends' => 'array',

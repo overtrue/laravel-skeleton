@@ -6,6 +6,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return 'Hello.';
+        return 'Hello, it works!';
     }
 }

@@ -52,34 +52,37 @@ $ php artisan make:model Post -a --api
 ```
 
 ### 模型关系加载
+
 我们可以在前端请求时动态决定接口返回哪些模型关系，例如 `User` 模型有一个 `posts` 关系，我们的用户列表控制器如下 `UserController@index`:
 
 ```php
 public function index(Request $request)
 {
     $users = User::filter($request->all())
-        ->with($request->includes())   // <---
+        ->with($request->relations())   // <---
         ->latest()
         ->paginate($request->get('per_page', 20));
 
-    return Resource::collection($users);
+    return $users;
 }
 ```
 
 默认不会返回 `posts` 关系，当前端请求的 URL 如下时将会返回：
 ```
-http://laravel-skeleton.test/api/users?include=posts
+http://laravel-skeleton.test/api/users?with=posts
 ```
 
 如果期望返回指定的字段，则可以这样构造 URL：
 ```
-http://laravel-skeleton.test/api/users?include=posts:id,title,updated_at
+http://laravel-skeleton.test/api/users?with=posts:id,title,updated_at
 ```
 
 这样返回结果中 `posts` 结果将只包含 `id,title,updated_at` 。
+
 > 注意：这里不能省略掉关系的 id 字段，否则关系将无法正常加载。  
 
 ### 模型搜索功能
+
 项目已经内置的基本的搜索支持，您只需要在模型引入 `App\Traits\Filterable`，然后配置 `filterable`属性即可：
 
 ```php
@@ -101,19 +104,19 @@ class Post extends Model
 ```php
 public function index(Request $request)
 {
-    $posts = Post::with($request->includes())
+    $posts = Post::with($request->relations())
                 ->latest()
                 ->filter() // <---
                 ->paginate($request->get('per_page'));
 
-    return Resource::collection($posts);
+    return $posts;
 }
 ```
 
 URL 中只需要传递对应的参数值即可：
 
 ```
-http://laravel-skeleton.test/api/posts?include=user:id,username&user_id=123&category_id=4
+http://laravel-skeleton.test/api/posts?with=user:id,username&user_id=123&category_id=4
 // &user_id=123&category_id=4
 ```
 
@@ -157,8 +160,8 @@ User::updateQuietly([...]);
 + Response 200 (application/json)
 ```json
 {
-	"token_type": "bearer",
-	"token":"oVFV407i4jSTxjFO2tNxzh8lDaxVLbIkZZiDwjgMSYhvvkbUUXw8y0XgeYtxLAp4paznq0oxSMDdXmco"
+    "token_type": "bearer",
+    "token":"oVFV407i4jSTxjFO2tNxzh8lDaxVLbIkZZiDwjgMSYhvvkbUUXw8y0XgeYtxLAp4paznq0oxSMDdXmco"
 }
 ```
 
@@ -175,8 +178,8 @@ User::updateQuietly([...]);
 + Response 200 (`application/json`)
 ```json
 {
-	"token_type": "bearer",
-	"token":"oVFV407i4jSTxjFO2tNxzh8lDaxVLbIkZZiDwjgMSYhvvkbUUXw8y0XgeYtxLAp4paznq0oxSMDdXmco"
+    "token_type": "bearer",
+    "token":"oVFV407i4jSTxjFO2tNxzh8lDaxVLbIkZZiDwjgMSYhvvkbUUXw8y0XgeYtxLAp4paznq0oxSMDdXmco"
 }
 ```
 
@@ -184,7 +187,7 @@ User::updateQuietly([...]);
 ##### POST /api/logout
 
 + Request (`application/json`)
-		+ Headers
+        + Headers
 ```
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 ```
@@ -194,7 +197,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 ##### GET /api/user
 
 + Request (`application/json`)
-		+ Headers
+        + Headers
 ```
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 ```
@@ -202,10 +205,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 
 ```json
 {
-  "id": 1,
-  "creator": 0,
+  "id": "0892b118-856e-4a15-af0c-66a3a4a28eed",
   "username": "admin",
-  "name": "\u8d85\u7ea7\u7ba1\u7406\u5458",
+  "name": "超级管理员",
   "real_name": null,
   "avatar": "\/img\/default-avatar.png",
   "email": null,
@@ -228,7 +230,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 }
 ```
 
-#### 获取站点设置
+#### 获取全局设置
 
 ##### GET /api/settings
 

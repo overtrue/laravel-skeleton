@@ -55,7 +55,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return $user->loadMissing(\request()->includes());
+        return $user;
     }
 
     /**
