@@ -5132,16 +5132,16 @@
         },
         {
             "name": "brainmaestro/composer-git-hooks",
-            "version": "v2.8.3",
+            "version": "v2.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BrainMaestro/composer-git-hooks.git",
-                "reference": "97888dd34e900931117747cd34a42fdfcf271142"
+                "reference": "06f8cc6eb5771791c5b50356c033523e7fa69587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BrainMaestro/composer-git-hooks/zipball/97888dd34e900931117747cd34a42fdfcf271142",
-                "reference": "97888dd34e900931117747cd34a42fdfcf271142",
+                "url": "https://api.github.com/repos/BrainMaestro/composer-git-hooks/zipball/06f8cc6eb5771791c5b50356c033523e7fa69587",
+                "reference": "06f8cc6eb5771791c5b50356c033523e7fa69587",
                 "shasum": ""
             },
             "require": {
@@ -5197,7 +5197,7 @@
                 "composer",
                 "git"
             ],
-            "time": "2019-12-09T09:49:20+00:00"
+            "time": "2021-01-26T14:47:34+00:00"
         },
         {
             "name": "composer/ca-bundle",
