@@ -1048,16 +1048,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.9.2",
+            "version": "v2.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "504ee92651c187c58640d87f03a7941977ef0149"
+                "reference": "81f3027af262590ffb63f202cba6d055d562a9a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/504ee92651c187c58640d87f03a7941977ef0149",
-                "reference": "504ee92651c187c58640d87f03a7941977ef0149",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/81f3027af262590ffb63f202cba6d055d562a9a1",
+                "reference": "81f3027af262590ffb63f202cba6d055d562a9a1",
                 "shasum": ""
             },
             "require": {
@@ -1104,7 +1104,7 @@
                 "laravel",
                 "sanctum"
             ],
-            "time": "2021-03-23T17:31:19+00:00"
+            "time": "2021-03-30T21:29:22+00:00"
         },
         {
             "name": "laravel/tinker",
