@@ -53,10 +53,10 @@ trait Filterable
      *  order_by=age:desc,created_at:asc...
      * </pre>
      *
-     * @param string                                $value
      * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string                                $value
      */
-    public function filterOrderBy($value, $query)
+    public function filterOrderBy(Builder $query, $value)
     {
         $segments = \explode(',', $value);
 
