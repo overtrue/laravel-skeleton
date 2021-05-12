@@ -4,12 +4,12 @@ namespace App\Traits;
 
 use Illuminate\Support\Str;
 
-trait UseUuid
+trait UsingUuidAsPrimaryKey
 {
-    public static function bootUseUuid(): void
+    public static function bootUsingUuidAsPrimaryKey(): void
     {
         static::creating(function (self $model): void {
-            /* @var \Illuminate\Database\Eloquent\Model|\App\Traits\UseUuid $model */
+            /* @var \Illuminate\Database\Eloquent\Model|\App\Traits\UsingUuidAsPrimaryKey $model */
             if (empty($model->{$model->getKeyName()})) {
                 $model->{$model->getKeyName()} = Str::orderedUuid()->toString();
             }

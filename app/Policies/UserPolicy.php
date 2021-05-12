@@ -9,12 +9,12 @@ class UserPolicy extends Policy
     /**
      * Determine whether the user can view the user.
      *
-     * @param \App\Models\User $user
-     * @param \App\Models\User $targetUser
+     * @param  \App\Models\User|null  $user
+     * @param  \App\Models\User       $targetUser
      *
-     * @return mixed
+     * @return bool
      */
-    public function view(User $user, User $targetUser)
+    public function view(?User $user, User $targetUser): bool
     {
         return true;
     }
@@ -24,9 +24,9 @@ class UserPolicy extends Policy
      *
      * @param \App\Models\User $user
      *
-     * @return mixed
+     * @return false
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         return false;
     }
@@ -37,9 +37,9 @@ class UserPolicy extends Policy
      * @param \App\Models\User $user
      * @param \App\Models\User $targetUser
      *
-     * @return mixed
+     * @return bool
      */
-    public function update(User $user, User $targetUser)
+    public function update(User $user, User $targetUser): bool
     {
         return $user->is($targetUser);
     }
@@ -50,9 +50,9 @@ class UserPolicy extends Policy
      * @param \App\Models\User $user
      * @param \App\Models\User $targetUser
      *
-     * @return mixed
+     * @return false
      */
-    public function delete(User $user, User $targetUser)
+    public function delete(User $user, User $targetUser): bool
     {
         return false;
     }
@@ -63,9 +63,9 @@ class UserPolicy extends Policy
      * @param \App\Models\User $user
      * @param \App\Models\User $targetUser
      *
-     * @return mixed
+     * @return false
      */
-    public function restore(User $user, User $targetUser)
+    public function restore(User $user, User $targetUser): bool
     {
         return false;
     }
@@ -76,9 +76,9 @@ class UserPolicy extends Policy
      * @param \App\Models\User $user
      * @param \App\Models\User $targetUser
      *
-     * @return mixed
+     * @return false
      */
-    public function forceDelete(User $user, User $targetUser)
+    public function forceDelete(User $user, User $targetUser): bool
     {
         return false;
     }

@@ -9,14 +9,15 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": "^7.4",
+    "php": "^8.0",
     "ext-json": "*",
     "fideloper/proxy": "^4.4.1",
+    "friendsofphp/php-cs-fixer": "^3.0",
     "fruitcake/laravel-cors": "^2.0.3",
+    "guzzlehttp/guzzle": "^7.2.0",
     "laravel/framework": "^8.14.0",
     "laravel/sanctum": "^2.8.0",
     "laravel/tinker": "^2.5.0",
-    "guzzlehttp/guzzle": "^7.2.0",
     "overtrue/laravel-lang": "^5.0.0",
     "overtrue/laravel-options": "^2.0.0",
     "predis/predis": "^1.1.6"
@@ -25,7 +26,6 @@
     "barryvdh/laravel-ide-helper": "^2.8.1",
     "beyondcode/laravel-dump-server": "^1.6.0",
     "brainmaestro/composer-git-hooks": "^2.8.3",
-    "friendsofphp/php-cs-fixer": "^2.16.7",
     "doctrine/dbal": "^3.0.0",
     "facade/ignition": "^2.5.0",
     "fzaninotto/faker": "^1.9.1",
@@ -90,8 +90,8 @@
       "cghooks update"
     ],
     "cghooks": "vendor/bin/cghooks",
-    "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php_cs --dry-run --ansi",
-    "fix-style": "php-cs-fixer fix --using-cache=no --config=.php_cs --ansi",
+    "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php-cs-fixer.php --dry-run --ansi",
+    "fix-style": "php-cs-fixer fix --using-cache=no --config=.php-cs-fixer.php --ansi",
     "test": "@php artisan test"
   },
   "scripts-descriptions": {

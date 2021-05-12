@@ -24,6 +24,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\UseApiGuard::class,
+        \App\Http\Middleware\StoreUserAgent::class,
     ];
 
     /**
@@ -39,6 +40,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\StoreUserAgent::class,
+            \App\Http\Middleware\RefreshUserActiveAt::class,
         ],
 
         'api' => [
@@ -46,6 +49,7 @@ class Kernel extends HttpKernel
             EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\StoreUserAgent::class,
         ],
     ];
 
