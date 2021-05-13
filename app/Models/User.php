@@ -39,6 +39,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property \Carbon\Carbon $first_active_at
  * @property \Carbon\Carbon $last_active_at
  * @property \Carbon\Carbon $frozen_at
+ * @property string         id
+ * @method static where(string $string, mixed $username)
+ * @method static create(array $all)
  */
 class User extends Authenticatable
 {
@@ -105,8 +108,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
      * @var array
      */
     protected $hidden = [
@@ -116,8 +117,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
      * @var array
      */
     protected $casts = [
@@ -163,35 +162,21 @@ class User extends Authenticatable
         );
     }
 
-    /**
-     * @param  string  $token
-     *
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPassword($token));
     }
 
-    /**
-     * @return void
-     */
-    public function sendEmailVerificationNotification()
+    public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmail());
     }
 
-    /**
-     * @return string
-     */
     public function getAvatarAttribute(): string
     {
         return $this->attributes['avatar'] ?? self::DEFAULT_AVATAR;
     }
 
-    /**
-     * @return string
-     */
     public function getDisplayStatusAttribute(): string
     {
         return self::STATUS_LABELS[$this->status ?? self::STATUS_ACTIVE];
@@ -215,17 +200,15 @@ class User extends Authenticatable
     }
 
     #[ArrayShape(['token_type' => "string", 'token' => "string"])]
-    public function createDeviceToken(?string $device = null): array
-    {
+    public function createDeviceToken(
+        ?string $device = null
+    ): array {
         return [
             'token_type' => 'bearer',
             'token' => $this->createToken($device ?? Device::PC)->plainTextToken,
         ];
     }
 
-    /**
-     * @return \App\Models\User
-     */
     public function refreshLastActiveAt(): static
     {
         $this->updateQuietly(
@@ -250,9 +233,6 @@ class User extends Authenticatable
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function attributesToArray(): array
     {
         if (\auth()->check() && $this->is(auth()->user())) {

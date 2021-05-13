@@ -4,9 +4,6 @@ namespace App\Pivots;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-/**
- * Class PivotWithCreator.
- */
 class PivotWithCreator extends Pivot
 {
     public function fill(array $attributes)

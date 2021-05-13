@@ -5,9 +5,6 @@ namespace App\Pivots;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 
-/**
- * Class MorphPivotWithCreator.
- */
 class MorphPivotWithCreator extends MorphPivot
 {
     public function fill(array $attributes)

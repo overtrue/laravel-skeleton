@@ -5,25 +5,17 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use JetBrains\PhpStorm\ArrayShape;
 
 class RegisterController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return mixed
-     */
-    public function __invoke(Request $request)
+    #[ArrayShape(['token_type' => "string", 'token' => "string"])]
+    public function __invoke(Request $request): array
     {
         $request->validate([
             'username' => 'required|unique:users',

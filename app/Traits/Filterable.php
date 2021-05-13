@@ -10,11 +10,7 @@ use Illuminate\Support\Str;
  */
 trait Filterable
 {
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \Illuminate\Http\Request|null         $input
-     */
-    public function scopeFilter(Builder $query, $input = null)
+    public function scopeFilter(Builder $query, ?array $input = null)
     {
         $input = $input && \is_array($input) ? $input : \request()->query();
 
@@ -36,12 +32,7 @@ trait Filterable
         }
     }
 
-    /**
-     * @param string $key
-     *
-     * @return bool
-     */
-    public function isFilterable(string $key)
+    public function isFilterable(string $key): bool
     {
         return \property_exists($this, 'filterable') && \in_array($key, $this->filterable);
     }

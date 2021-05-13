@@ -3,37 +3,33 @@
 namespace App\Traits;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * Trait BelongsToUser.
- *
  * @property \App\Models\User $user
+ * @property string           $user_id
+ * @method static saving(\Closure $param)
+ * @method belongsTo(string $class)
  */
 trait BelongsToUser
 {
     public static function bootBelongsToUser()
     {
-        static::saving(function ($model) {
-            if (!$model->user_id) {
-                $model->user_id = \auth()->id() ?? User::SYSTEM_USER_ID;
+        static::saving(
+            function (Model $model) {
+                if (!$model->user_id) {
+                    $model->user_id = \auth()->id() ?? User::SYSTEM_USER_ID;
+                }
             }
-        });
+        );
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class)->withTrashed();
     }
 
-    /**
-     * @param \App\Models\User|int $user
-     *
-     * @return bool
-     */
-    public function isOwnedBy($user)
+    public function isOwnedBy(User|int $user): bool
     {
         if ($user instanceof User) {
             $user = $user->id;

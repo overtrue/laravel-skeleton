@@ -16,18 +16,12 @@ trait UsingUuidAsPrimaryKey
         });
     }
 
-    /**
-     * @return bool
-     */
-    public function getIncrementing()
+    public function getIncrementing(): bool
     {
         return false;
     }
 
-    /**
-     * @return string
-     */
-    public function getKeyType()
+    public function getKeyType(): string
     {
         return 'string';
     }

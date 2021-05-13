@@ -9,26 +9,17 @@ use Illuminate\Support\Fluent;
  */
 trait HasExtendsProperty
 {
-    /**
-     * @param array $extends
-     */
-    public function setExtendsAttribute($extends)
+    public function setExtendsAttribute(array $extends)
     {
         $this->attributes['extends'] = json_encode($extends);
     }
 
-    /**
-     * @return \Illuminate\Support\Fluent
-     */
-    public function getExtendsAttribute()
+    public function getExtendsAttribute(): Fluent
     {
         return new Fluent($this->getExtends());
     }
 
-    /**
-     * @return array
-     */
-    public function getExtends()
+    public function getExtends(): array
     {
         return \array_replace_recursive(\defined('static::DEFAULT_EXTENDS') ? \constant('static::DEFAULT_EXTENDS') : [], \json_decode($this->attributes['extends'] ?? '{}', true) ?? []);
     }

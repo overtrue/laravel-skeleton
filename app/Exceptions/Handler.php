@@ -38,13 +38,7 @@ class Handler extends ExceptionHandler
         //
     }
 
-    /**
-     * @param \Illuminate\Http\Request                   $request
-     * @param \Illuminate\Validation\ValidationException $exception
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function invalidJson($request, ValidationException $exception)
+    protected function invalidJson($request, ValidationException $exception): \Illuminate\Http\JsonResponse
     {
         $errors = $exception->errors();
         $firstError = \reset($errors);

@@ -10,12 +10,6 @@ use Illuminate\Support\Str;
 
 class StoreUserAgent
 {
-    /**
-     * @param  Request  $request
-     * @param \Closure  $next
-     *
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next): mixed
     {
         if (Auth::check()) {

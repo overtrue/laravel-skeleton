@@ -9,26 +9,17 @@ use Illuminate\Support\Fluent;
  */
 trait HasSettingsProperty
 {
-    /**
-     * @param array $settings
-     */
-    public function setSettingsAttribute($settings)
+    public function setSettingsAttribute(array $settings)
     {
         $this->attributes['settings'] = json_encode($settings);
     }
 
-    /**
-     * @return \Illuminate\Support\Fluent
-     */
-    public function getSettingsAttribute()
+    public function getSettingsAttribute(): Fluent
     {
         return new Fluent($this->getSettings());
     }
 
-    /**
-     * @return array
-     */
-    public function getSettings()
+    public function getSettings(): array
     {
         return \array_replace_recursive(\defined('static::DEFAULT_SETTINGS') ? \constant('static::DEFAULT_SETTINGS') : [], \json_decode($this->attributes['settings'] ?? '{}', true) ?? []);
     }

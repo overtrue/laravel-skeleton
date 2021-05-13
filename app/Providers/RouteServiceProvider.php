@@ -14,11 +14,6 @@ class RouteServiceProvider extends ServiceProvider
 
     protected $namespace = null;
 
-    /**
-     * Define the routes for the application.
-     *
-     * @return void
-     */
     public function boot()
     {
         $this->configureRateLimiting();

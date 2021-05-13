@@ -7,14 +7,6 @@ use Illuminate\Http\Request;
 
 class AdminAccess
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     *
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next)
     {
         \abort_if(\auth()->guest() || $request->user()->isNotAdmin(), 403, '非法访问！');

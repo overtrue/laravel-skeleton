@@ -6,9 +6,10 @@ use App\Pivots\MorphPivotWithCreator;
 use App\Models\User;
 
 /**
- * Trait HasAdmins.
- *
  * @property \Illuminate\Database\Eloquent\Collection $admins
+ * @method static saved(\Closure $param)
+ * @method static created(\Closure $param)
+ * @method morphToMany(string $class, string $string)
  */
 trait HasAdmins
 {
@@ -29,10 +30,7 @@ trait HasAdmins
         });
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
-     */
-    public function admins()
+    public function admins(): \Illuminate\Database\Eloquent\Relations\MorphToMany
     {
         return $this->morphToMany(User::class, 'adminable')
             ->using(MorphPivotWithCreator::class)
@@ -42,60 +40,32 @@ trait HasAdmins
             ->wherePivot('user_id', '<>', User::SYSTEM_USER_ID);
     }
 
-    /**
-     * @param \App\Models\User|int $user
-     *
-     * @return array
-     */
-    public function addAdmin($user)
+    public function addAdmin(User|int $user): array
     {
         return $this->admins()->syncWithoutDetaching($user);
     }
 
-    /**
-     * @param \App\Models\User|int $user
-     *
-     * @return int
-     */
-    public function removeAdmin($user)
+    public function removeAdmin(User|int $user): int
     {
         return $this->admins()->detach($user);
     }
 
-    /**
-     * @param \App\Models\User|int $user
-     *
-     * @return bool
-     */
-    public function hasAdmin($user)
+    public function hasAdmin(User|int $user): bool
     {
         return $this->isManagedBy($user);
     }
 
-    /**
-     * @param array $admins
-     *
-     * @return array
-     */
-    public function addAdmins(array $admins)
+    public function addAdmins(array $admins): array
     {
         return \array_map([$this, 'addAdmin'], $admins);
     }
 
-    /**
-     * @param array $admins
-     */
     public function removeAdmins(array $admins)
     {
         $this->admins()->detach($admins);
     }
 
-    /**
-     * @param \App\Models\User|int $admin
-     *
-     * @return array|int
-     */
-    public function toggleAdmin($admin)
+    public function toggleAdmin($admin): int|array
     {
         if ($this->hasAdmin($admin)) {
             return $this->removeAdmin($admin);
@@ -104,12 +74,7 @@ trait HasAdmins
         return $this->addAdmin($admin);
     }
 
-    /**
-     * @param \App\Models\User|int $user
-     *
-     * @return bool
-     */
-    public function isRelationCreatedBy($user)
+    public function isRelationCreatedBy(User|int $user): bool
     {
         if ($user instanceof User) {
             $user = $user->id;

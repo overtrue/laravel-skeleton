@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait UseTableNameAsMorphClass
 {
-    public function getMorphClass()
+    public function getMorphClass(): string
     {
         return $this->getTable();
     }

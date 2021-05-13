@@ -15,7 +15,7 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->unsignedBigInteger('creator_id')->comment('创建者');
+            $table->uuid('creator_id')->comment('创建者');
             $table->string('name');
             $table->string('color', 10)->nullable();
             $table->string('icon')->nullable();
@@ -24,7 +24,7 @@ class CreateTagsTable extends Migration
         });
 
         Schema::create('taggables', function (Blueprint $table) {
-            $table->string('uuid')->primary();
+            $table->uuid('id')->primary();
             $table->uuid('tag_id')->index();
             $table->uuidMorphs('taggable');
         });

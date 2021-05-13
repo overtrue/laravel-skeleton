@@ -10,11 +10,6 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
     public function index(Request $request)
     {
         return User::filter($request->all())
@@ -23,9 +18,6 @@ class UserController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Resources\Json\JsonResource
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
@@ -49,35 +41,19 @@ class UserController extends Controller
         return User::create($request->all());
     }
 
-    /**
-     * @param  \App\Models\User  $user
-     * @return \App\Models\User
-     */
-    public function show(User $user)
+    public function show(User $user): User
     {
         return $user;
     }
 
-    /**
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \App\Models\User
-     */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user): User
     {
         $user->update($request->all());
 
         return $user;
     }
 
-    /**
-     * @param \App\Models\User $user
-     *
-     * @return \Illuminate\Http\Response
-     *
-     * @throws \Exception
-     */
-    public function destroy(User $user)
+    public function destroy(User $user): \Illuminate\Http\Response
     {
         $user->delete();
 

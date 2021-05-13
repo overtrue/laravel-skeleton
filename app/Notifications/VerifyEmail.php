@@ -8,14 +8,7 @@ use Illuminate\Support\Facades\URL;
 
 class VerifyEmail extends Notification
 {
-    /**
-     * Get the verification URL for the given notifiable.
-     *
-     * @param mixed $notifiable
-     *
-     * @return string
-     */
-    protected function verificationUrl($notifiable)
+    protected function verificationUrl($notifiable): string
     {
         $url = URL::temporarySignedRoute(
             'verification.verify',

@@ -7,29 +7,20 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use JetBrains\PhpStorm\ArrayShape;
 
 class LoginController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest');
     }
 
     /**
-     * Attempt to log the user into the application.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
-     *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function __invoke(Request $request)
+    #[ArrayShape(['token_type' => "string", 'token' => "string"])]
+    public function __invoke(Request $request): array
     {
         $request->validate([
             'username' => 'required',

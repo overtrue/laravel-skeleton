@@ -6,14 +6,6 @@ use Closure;
 
 class SetLocale
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     *
-     * @return mixed
-     */
     public function handle($request, Closure $next)
     {
         if ($locale = $this->parseLocale($request)) {
@@ -23,12 +15,7 @@ class SetLocale
         return $next($request);
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return string|null
-     */
-    protected function parseLocale($request)
+    protected function parseLocale($request): string
     {
         $locales = config('app.locales');
 

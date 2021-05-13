@@ -9,12 +9,6 @@ use Illuminate\Http\Request;
 
 class RefreshUserActiveAt
 {
-    /**
-     * @param  Request  $request
-     * @param \Closure  $next
-     *
-     * @return mixed
-     */
     public function handle(Request $request, Closure $next): mixed
     {
         if (\Auth::check()) {

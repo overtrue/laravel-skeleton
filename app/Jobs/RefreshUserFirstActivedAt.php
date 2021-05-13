@@ -18,21 +18,11 @@ class RefreshUserFirstActivedAt implements ShouldQueue
 
     public User $user;
 
-    /**
-     * Create a new job instance.
-     *
-     * @param  \App\User  $user
-     */
     public function __construct(User $user)
     {
         $this->user = $user;
     }
 
-    /**
-     * Execute the job.
-     *
-     * @return void
-     */
     public function handle()
     {
         $this->user->refreshFirstActiveAt();
