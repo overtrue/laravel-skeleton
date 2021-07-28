@@ -7979,16 +7979,16 @@
         },
         {
             "name": "overtrue/laravel-query-logger",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-query-logger.git",
-                "reference": "ad76e00bd08a9d1ec3e6679dd820724348f44c28"
+                "reference": "d9299f4f6523eb4a1c84412d75a757026189f9b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-query-logger/zipball/ad76e00bd08a9d1ec3e6679dd820724348f44c28",
-                "reference": "ad76e00bd08a9d1ec3e6679dd820724348f44c28",
+                "url": "https://api.github.com/repos/overtrue/laravel-query-logger/zipball/d9299f4f6523eb4a1c84412d75a757026189f9b5",
+                "reference": "d9299f4f6523eb4a1c84412d75a757026189f9b5",
                 "shasum": ""
             },
             "require": {
@@ -8030,9 +8030,9 @@
             "description": "A dev tool to log all queries for laravel application.",
             "support": {
                 "issues": "https://github.com/overtrue/laravel-query-logger/issues",
-                "source": "https://github.com/overtrue/laravel-query-logger/tree/2.1.1"
+                "source": "https://github.com/overtrue/laravel-query-logger/tree/2.1.2"
             },
-            "time": "2021-07-01T14:24:09+00:00"
+            "time": "2021-07-18T07:43:54+00:00"
         },
         {
             "name": "phar-io/manifest",
