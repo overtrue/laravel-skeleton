@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class UserAgent extends Model
 {
     use SoftDeletes;
-    use UsingUuidAsPrimaryKey;
     use UseTableNameAsMorphClass;
 
     protected $fillable = ['user_id', 'agent', 'last_used_at'];
