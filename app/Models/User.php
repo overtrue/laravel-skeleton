@@ -71,7 +71,7 @@ class User extends Authenticatable
     public const STATUS_ACTIVE = 'active';
     public const STATUS_INACTIVATED = 'inactivated';
     public const STATUS_FROZEN = 'frozen';
-    public const STATUS_LABELS = [
+    public const STATUSES = [
         self::STATUS_INACTIVATED => '未激活',
         self::STATUS_ACTIVE => '正常',
         self::STATUS_FROZEN => '已冻结',
@@ -179,7 +179,7 @@ class User extends Authenticatable
 
     public function getDisplayStatusAttribute(): string
     {
-        return self::STATUS_LABELS[$this->status ?? self::STATUS_ACTIVE];
+        return self::STATUSES[$this->status ?? self::STATUS_ACTIVE];
     }
 
     public function isAdmin(): bool
@@ -192,11 +192,19 @@ class User extends Authenticatable
         return !$this->is_admin;
     }
 
-    public function filterSearch($query, $keyword)
+    public function filterKeyword($query, $keyword)
     {
+        if (empty($keyword)) {
+            return $query;
+        }
+
         $keyword = \sprintf('%%%s%%', $keyword);
 
-        return $query->where('name', 'like', $keyword)->orWhere('username', 'like', $keyword);
+        return $query->where(
+            function ($q) use ($keyword) {
+                $q->where('name', 'like', $keyword)->orWhere('username', 'like', $keyword);
+            }
+        );
     }
 
     #[ArrayShape(['token_type' => "string", 'token' => "string"])]
