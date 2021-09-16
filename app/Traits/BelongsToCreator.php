@@ -19,7 +19,7 @@ trait BelongsToCreator
                 $model->creator_id = $model->creator_id ?? \auth()->id() ?? User::SYSTEM_USER_ID;
             }
         );
-        
+
         static::updating(
             function (Model $model) {
                 \abort_if($model->isDirty('creator_id'), 403, '创建者不可更新');
