@@ -14,8 +14,8 @@ class CreateTagsTable extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('creator_id')->comment('创建者');
+            $table->id();
+            $table->unsignedInteger('creator_id')->comment('创建者');
             $table->string('name');
             $table->string('color', 10)->nullable();
             $table->string('icon')->nullable();
@@ -24,9 +24,9 @@ class CreateTagsTable extends Migration
         });
 
         Schema::create('taggables', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('tag_id')->index();
-            $table->uuidMorphs('taggable');
+            $table->id('aid');
+            $table->unsignedInteger('tag_id')->index();
+            $table->morphs('taggable');
         });
     }
 

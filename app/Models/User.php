@@ -54,7 +54,6 @@ class User extends Authenticatable
     use HasExtendsProperty;
     use Filterable;
     use HasFactory;
-    use UsingUuidAsPrimaryKey;
 
     public const GENDER_UNKNOWN = 'unknown';
     public const GENDER_MALE = 'male';

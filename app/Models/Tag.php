@@ -22,7 +22,6 @@ class Tag extends Model
     use SoftDeletes;
     use BelongsToCreator;
     use UseTableNameAsMorphClass;
-    use UsingUuidAsPrimaryKey;
 
     protected $fillable = [
         'creator_id',
