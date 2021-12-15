@@ -2649,23 +2649,17 @@
         },
         {
             "name": "overtrue/laravel-options",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/laravel-options.git",
-                "reference": "5f03f1bb0ccf1f79816257070616aeaaed412c80"
+                "reference": "1f54345c52e7042ccdcf72a85f5dc53f8e2490cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/laravel-options/zipball/5f03f1bb0ccf1f79816257070616aeaaed412c80",
-                "reference": "5f03f1bb0ccf1f79816257070616aeaaed412c80",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "https://api.github.com/repos/overtrue/laravel-options/zipball/1f54345c52e7042ccdcf72a85f5dc53f8e2490cb",
+                "reference": "1f54345c52e7042ccdcf72a85f5dc53f8e2490cb",
+                "shasum": ""
             },
             "require": {
                 "laravel/framework": "~5.5||~6.0||~7.0||~8.0",
@@ -2673,7 +2667,7 @@
             },
             "require-dev": {
                 "brainmaestro/composer-git-hooks": "^2.7",
-                "friendsofphp/php-cs-fixer": "^2.16",
+                "friendsofphp/php-cs-fixer": "^3.3",
                 "laravel/framework": "^6.18",
                 "mockery/mockery": "^1.2",
                 "orchestra/testbench": "^4.7",
@@ -2724,9 +2718,15 @@
             ],
             "support": {
                 "issues": "https://github.com/overtrue/laravel-options/issues",
-                "source": "https://github.com/overtrue/laravel-options/tree/2.0.0"
+                "source": "https://github.com/overtrue/laravel-options/tree/2.1.0"
             },
-            "time": "2020-09-21T15:13:00+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/overtrue",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-12-03T07:30:45+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
