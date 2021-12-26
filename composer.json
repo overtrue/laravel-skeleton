@@ -9,35 +9,29 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": "^8.0",
+    "php": "^8.1.1",
     "ext-json": "*",
-    "fideloper/proxy": "^4.4.1",
-    "friendsofphp/php-cs-fixer": "^3.0",
-    "fruitcake/laravel-cors": "^2.0.3",
-    "guzzlehttp/guzzle": "^7.2.0",
-    "laravel/framework": "^8.14.0",
-    "laravel/sanctum": "^2.8.0",
-    "laravel/tinker": "^2.5.0",
-    "overtrue/laravel-lang": "^5.0.0",
-    "overtrue/laravel-options": "^2.0.0",
+    "fruitcake/laravel-cors": "dev-develop",
+    "guzzlehttp/guzzle": "^7.0.1",
+    "laravel/framework": "^9.0",
+    "laravel/sanctum": "^2.11|dev-develop",
+    "laravel/tinker": "^2.5|dev-develop",
     "predis/predis": "^1.1.6"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.8.1",
-    "beyondcode/laravel-dump-server": "^1.6.0",
-    "brainmaestro/composer-git-hooks": "^2.8.3",
-    "doctrine/dbal": "^3.0.0",
-    "facade/ignition": "^2.5.0",
-    "fzaninotto/faker": "^1.9.1",
-    "mockery/mockery": "^1.4.2",
-    "nunomaduro/collision": "^5.1.0",
-    "overtrue/laravel-query-logger": "^2.0.1",
-    "phpunit/phpunit": "^9.4.3"
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "fakerphp/faker": "^1.9.1",
+    "mockery/mockery": "^1.4.4",
+    "nunomaduro/collision": "^6.0",
+    "phpunit/phpunit": "^9.5.10"
   },
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
   },
   "autoload": {
     "psr-4": {
@@ -54,8 +48,6 @@
       "Tests\\": "tests/"
     }
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "extra": {
     "hooks": {
       "pre-commit": [
@@ -73,16 +65,17 @@
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover --ansi"
     ],
+    "post-update-cmd": [
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+      "cghooks update",
+      "@php artisan ide-helper:generate",
+      "@php artisan ide-helper:meta"
+    ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
-    ],
-    "post-update-cmd": [
-      "cghooks update",
-      "@php artisan ide-helper:generate",
-      "@php artisan ide-helper:meta"
     ],
     "post-merge": "composer install",
     "post-install-cmd": [
@@ -98,5 +91,7 @@
     "test": "Run all tests.",
     "check-style": "Run style checks (only dry run - no fixing!).",
     "fix-style": "Run style checks and fix violations."
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
