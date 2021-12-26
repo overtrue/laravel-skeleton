@@ -11,7 +11,7 @@ class RefreshUserActiveAt
 {
     public function handle(Request $request, Closure $next): mixed
     {
-        if (\Auth::check()) {
+        if (\Auth::hasUser()) {
             \mt_rand(0, 9) > 5 || RefreshUserLastActiveAt::dispatchAfterResponse($request->user());
 
             if (empty($request->user()->first_active_at)) {
