@@ -8,7 +8,6 @@ use App\Traits\Filterable;
 use App\Traits\HasCacheProperty;
 use App\Traits\HasExtendsProperty;
 use App\Traits\HasSettingsProperty;
-use App\Traits\UsingUuidAsPrimaryKey;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

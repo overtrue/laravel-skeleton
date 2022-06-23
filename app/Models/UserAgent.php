@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Traits\UseTableNameAsMorphClass;
-use App\Traits\UsingUuidAsPrimaryKey;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

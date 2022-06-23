@@ -56,7 +56,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'asset_url' => env('ASSET_URL', null),
+    'asset_url' => env('ASSET_URL'),
 
     /*
     |--------------------------------------------------------------------------
@@ -131,6 +131,24 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+     /*
+    |--------------------------------------------------------------------------
+    | Maintenance Mode Driver
+    |--------------------------------------------------------------------------
+    |
+    | These configuration options determine the driver used to determine and
+    | manage Laravel's "maintenance mode" status. The "cache" driver will
+    | allow maintenance mode to be controlled across multiple machines.
+    |
+    | Supported drivers: "file", "cache"
+    |
+    */
+
+    'maintenance' => [
+        'driver' => 'file',
+        // 'store'  => 'redis',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -185,7 +203,7 @@ return [
 
     ],
 
-    'aliases' => array_merge(Facade::defaultAliases(), [
-        // ...
-    ]),
+    'aliases' => Facade::defaultAliases()->merge([
+        // 'ExampleClass' => App\Example\ExampleClass::class,
+    ])->toArray(),
 ];
