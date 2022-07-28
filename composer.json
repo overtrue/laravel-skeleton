@@ -13,7 +13,7 @@
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.2",
     "laravel/framework": "^9.11",
-    "laravel/sanctum": "^2.14.1",
+    "laravel/sanctum": "^3.0.0",
     "laravel/tinker": "^2.7",
     "predis/predis": "^1.1.6"
   },
