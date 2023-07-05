@@ -15,7 +15,8 @@
     "laravel/framework": "^10.0",
     "laravel/sanctum": "^3.0.1",
     "laravel/tinker": "^2.7",
-    "predis/predis": "^2.0.0"
+    "predis/predis": "^2.0.0",
+    "tucker-eric/eloquentfilter": "*"
   },
   "require-dev": {
     "fakerphp/faker": "^1.9.1",
@@ -35,6 +36,8 @@
   "autoload": {
     "psr-4": {
       "App\\": "app/",
+      "Domain\\": "domain/",
+      "Infrastructure\\": "infrastructure/",
       "Database\\Factories\\": "database/factories/",
       "Database\\Seeders\\": "database/seeders/"
     },

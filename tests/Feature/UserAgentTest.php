@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
-use App\Models\UserAgent;
 use Carbon\Carbon;
+use Domain\User\User;
+use Domain\User\UserAgent;
 use Tests\TestCase;
 
 class UserAgentTest extends TestCase

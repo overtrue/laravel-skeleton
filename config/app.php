@@ -131,7 +131,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-     /*
+    /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
     |--------------------------------------------------------------------------
@@ -195,11 +195,12 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
+        \Infrastructure\Generator\GeneratorServiceProvider::class,
+        \Infrastructure\Providers\AppServiceProvider::class,
+        \Infrastructure\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        \Infrastructure\Providers\EventServiceProvider::class,
+        \Infrastructure\Providers\RouteServiceProvider::class,
 
     ],
 

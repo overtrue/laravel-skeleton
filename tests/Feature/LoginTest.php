@@ -2,13 +2,13 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
+use Domain\User\User;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    /** @var \App\Models\User */
+    /** @var \Domain\User\User */
     protected $user;
 
     public function setUp(): void
@@ -47,14 +47,14 @@ class LoginTest extends TestCase
             'password' => 'password',
         ])->json()['token'];
 
-        $headers = ['Authorization' => 'Bearer ' . $token];
+        $headers = ['Authorization' => 'Bearer '.$token];
 
-        $this->withHeaders($headers)->postJson("/api/logout")
+        $this->withHeaders($headers)->postJson('/api/logout')
             ->assertSuccessful();
 
         $this->refreshApplication();
 
-        $this->flushHeaders()->getJson("/api/user")
+        $this->flushHeaders()->getJson('/api/user')
             ->assertStatus(401);
     }
 }

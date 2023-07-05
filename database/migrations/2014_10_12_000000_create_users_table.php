@@ -1,17 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-return new class () extends Migration {
+return new class() extends Migration
+{
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('username')->unique();
             $table->string('name');
-            $table->string('real_name')->nullable();
+            $table->string('nickname')->nullable();
             $table->string('avatar')->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('gender')->default('unknown')->comment('性别：unknown/female/male');
