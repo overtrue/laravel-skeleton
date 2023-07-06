@@ -15,7 +15,9 @@ use PHPUnit\Framework\Assert as PHPUnit;
 class FakeAction
 {
     protected static array $actions = [];
+
     protected static array $actionTimes = [];
+
     protected static array $instances = [];
 
     public function __construct(protected string $action)
@@ -42,7 +44,7 @@ class FakeAction
         return self::$instances[$this->action] = Mockery::spy($this->action);
     }
 
-    public function fake(): Mockery\LegacyMockInterface|\Closure|MockInterface
+    public function fake(): Mockery\LegacyMockInterface|Closure|MockInterface
     {
         self::$instances[$this->action] = Mockery::mock($this->action, function ($mock) {
             $mock->shouldAllowMockingProtectedMethods();
@@ -66,7 +68,7 @@ class FakeAction
 
     public function shouldReceive(string $method): ExpectationInterface|Expectation|HigherOrderMessage
     {
-        if (empty(self::$instances[$this->action]) || !(self::$instances[$this->action] instanceof MockInterface)) {
+        if (empty(self::$instances[$this->action]) || ! (self::$instances[$this->action] instanceof MockInterface)) {
             self::$instances[$this->action] = Mockery::mock('stdClass', function ($mock) {
                 $mock->shouldAllowMockingProtectedMethods();
             });

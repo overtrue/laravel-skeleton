@@ -6,6 +6,11 @@ use Illuminate\Support\Str;
 
 class AppHelper
 {
+    public static function getStub(string $name): string
+    {
+        return __DIR__.'/stubs/'.$name.'.stub';
+    }
+
     public static function getNamespace(string $domain, ...$appends): string
     {
         $domain = Str::studly($domain);

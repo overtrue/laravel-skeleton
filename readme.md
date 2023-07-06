@@ -1,9 +1,11 @@
 # Laravel API 基础模板
 
 开箱即用的 Laravel API 基础结构。
-> 自己用的哈，仅供参考，不提供咨询解答服务。
+> 🚨自己用的哈，仅供参考，不提供咨询解答服务。
 
 ## 特点
+- DDD（领域模型驱动）结构；
+- 内置生成器，一键生成模块；
 - 内置 laravel/sanctum 的授权机制；
 - 高度完善的控制器、模型、模块模板；
 - 集成常用基础扩展；
@@ -40,22 +42,42 @@ $ php artisan migrate --seed
 
 ## 使用
 
-### 创建新模块
+### 创建新领域
 
 ```shell script
-$ php artisan make:model Post -a --api
-# Model created successfully.
-# Factory created successfully.
-# Created Migration: 2020_09_22_150134_create_posts_table
-# Seeder created successfully.
-# Controller created successfully.
+php artisan make:domain Post 
+```
+
+> 该命令将会创建 `domain/Post` 目录，包含 `Actions`, `Models`, `Policies`, `Filters` 等目录。
+
+### 创建领域类
+
+所有官方的生成命令都增加了 `-d` 参数，用于指定领域名称，例如：
+
+```shell
+php artisan make:model Post -d Post
+```
+另外，还有一些自定义的生成命令：
+
+```shell script
+php artisan make:action MarkPostAsDraft -d Post
+```
+
+### 创建应用类
+
+```shell script
+php artisan make:app Post
+php artisan make:endpoint GetPost -a Post
+php artisan make:middleware MustBePublished -a Post
+php artisan make:request CreatePost -a Post
+php artisan make:resource Post -a Post
 ```
 
 ### 内置接口
 
 #### 用户登录（获取 token）
 
-##### POST /api/login
+##### POST /api/auth/login
 
 + Request (`application/json`)
 ```json
@@ -67,13 +89,13 @@ $ php artisan make:model Post -a --api
 + Response 200 (application/json)
 ```json
 {
-    "token_type": "bearer",
+    "type": "bearer",
     "token":"oVFV407i4jSTxjFO2tNxzh8lDaxVLbIkZZiDwjgMSYhvvkbUUXw8y0XgeYtxLAp4paznq0oxSMDdXmco"
 }
 ```
 
 #### 用户注册
-##### POST /api/register
+##### POST /api/auth/register
 
 + Request (`application/json`)
 ```json
@@ -85,13 +107,13 @@ $ php artisan make:model Post -a --api
 + Response 200 (`application/json`)
 ```json
 {
-    "token_type": "bearer",
+    "type": "bearer",
     "token":"oVFV407i4jSTxjFO2tNxzh8lDaxVLbIkZZiDwjgMSYhvvkbUUXw8y0XgeYtxLAp4paznq0oxSMDdXmco"
 }
 ```
 
 #### 登出
-##### POST /api/logout
+##### POST /api/auth/logout
 
 + Request (`application/json`)
         + Headers
@@ -101,7 +123,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 + Response 204
 
 #### 获取当前登录用户
-##### GET /api/user
+##### GET /api/me
 
 + Request (`application/json`)
         + Headers
@@ -112,42 +134,23 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1...
 
 ```json
 {
-  "id": "0892b118-856e-4a15-af0c-66a3a4a28eed",
+  "id": 1,
   "username": "admin",
-  "name": "超级管理员",
-  "real_name": null,
+  "nickname": "超级管理员",
   "avatar": "\/img\/default-avatar.png",
   "email": null,
   "gender": "none",
   "phone": null,
   "birthday": null,
-  "status": "active",
-  "cache": [],
-  "properties": null,
   "settings": [],
   "is_admin": true,
   "last_active_at": null,
   "last_refreshed_at": null,
-  "frozen_at": null,
-  "status_remark": null,
+  "banned_at": null,
   "email_verified_at": null,
   "created_at": "2020-03-17T09:37:45.000000Z",
   "updated_at": "2020-03-17T09:37:45.000000Z",
   "deleted_at": null
-}
-```
-
-#### 获取全局设置
-
-##### GET /api/settings
-
-- Response 200 (`application/json`)
-
-```json
-{
-    "demo": {
-        "status":"it works!"
-    }
 }
 ```
 

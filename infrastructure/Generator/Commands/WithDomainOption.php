@@ -30,7 +30,7 @@ trait WithDomainOption
             return DomainHelper::getNamespace($this->option('domain'), $this->getAppendNamespace());
         }
 
-        return $rootNamespace .'/'. $this->getAppendNamespace();
+        return $rootNamespace.'/'.$this->getAppendNamespace();
     }
 
     protected function rootNamespace()

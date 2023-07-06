@@ -10,12 +10,10 @@ trait WithAppOption
 {
     protected function getOptions(): array
     {
-        return array_merge(
-            [
-                ['app', 'a', InputOption::VALUE_OPTIONAL, 'Provide app name.'],
-            ],
-            parent::getOptions()
-        );
+        return array_merge([
+            ['app', 'a', InputOption::VALUE_OPTIONAL, 'The application name'],
+            ['domain', 'd', InputOption::VALUE_OPTIONAL, 'The domain name'],
+        ], parent::getOptions());
     }
 
     public function getAppendNamespace(): string
@@ -27,7 +25,7 @@ trait WithAppOption
     protected function getDefaultNamespace($rootNamespace): string
     {
         if ($this->hasApp()) {
-            return AppHelper::getNamespace($this->option('app'), $this->getAppendNamespace());
+            return AppHelper::getNamespace($this->option('app'), Str::studly($this->option('domain')), $this->getAppendNamespace());
         }
 
         return $rootNamespace;

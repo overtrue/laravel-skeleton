@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+
+class Test extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Route::group(function () {
+            // Route::get('/users', Endpoints\ListUsers::class)->name('users.index');
+        });
+    }
+}

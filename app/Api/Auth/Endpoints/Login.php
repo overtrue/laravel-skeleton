@@ -7,7 +7,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
-use JetBrains\PhpStorm\ArrayShape;
 
 class Login
 {
@@ -16,7 +15,6 @@ class Login
     /**
      * @throws \Illuminate\Validation\ValidationException
      */
-    #[ArrayShape(['token_type' => 'string', 'token' => 'string'])]
     public function __invoke(Request $request): array
     {
         $request->validate([

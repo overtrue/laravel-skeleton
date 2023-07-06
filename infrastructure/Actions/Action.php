@@ -21,7 +21,9 @@ use Mockery\MockInterface;
 abstract class Action
 {
     protected static $fakeWhenTesting = false;
+
     protected static $fakeResult = null;
+
     protected static array $instances = [];
 
     public static function run(...$arguments): mixed
@@ -40,7 +42,7 @@ abstract class Action
 
     public static function runUnless($boolean, ...$arguments)
     {
-        return static::runIf(!$boolean, ...$arguments);
+        return static::runIf(! $boolean, ...$arguments);
     }
 
     //    abstract public function handle(...$arguments): mixed;
@@ -82,7 +84,7 @@ abstract class Action
 
     public static function mock(string $action)
     {
-        if (empty(self::$instances[$action]) || !(self::$instances[$action] instanceof MockInterface)) {
+        if (empty(self::$instances[$action]) || ! (self::$instances[$action] instanceof MockInterface)) {
             self::$instances[$action] = new FakeAction(static::class);
         }
 

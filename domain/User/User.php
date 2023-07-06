@@ -2,6 +2,7 @@
 
 namespace Domain\User;
 
+use function bcrypt;
 use Domain\User\Filters\UserFilter;
 use Domain\User\Notifications\ResetPassword;
 use Domain\User\Notifications\VerifyEmail;
@@ -10,28 +11,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
+use function is_null;
 use JetBrains\PhpStorm\ArrayShape;
 use Laravel\Sanctum\HasApiTokens;
+use function now;
 
 /**
- * @property string         $creator_id
- * @property string         $name
- * @property string         $real_name
+ * @property string         $nickname
  * @property string         $username
  * @property string         $avatar
  * @property string         $email
  * @property string         $phone
  * @property string         $gender
- * @property string         $status
  * @property \Carbon\Carbon $birthday
  * @property string         $password
- * @property object         $cache
- * @property object         $extends
  * @property object         $settings
  * @property bool           $is_admin
- * @property bool           $is_visible
  * @property \Carbon\Carbon $email_verified_at
  * @property \Carbon\Carbon $first_active_at
  * @property \Carbon\Carbon $last_active_at
@@ -40,6 +36,7 @@ use Laravel\Sanctum\HasApiTokens;
  *
  * @method static where(string $string, mixed $username)
  * @method static create(array $all)
+ * @method static UserFactory factory($count = null, $state = [])
  */
 class User extends Authenticatable
 {
@@ -50,65 +47,33 @@ class User extends Authenticatable
     use HasFactory;
     use Filterable;
 
-    public const GENDER_UNKNOWN = 'unknown';
-
-    public const GENDER_MALE = 'male';
-
-    public const GENDER_FEMALE = 'female';
-
     public const SAFE_FIELDS = [
         'id',
-        'name',
-        'real_name',
+        'nickname',
         'username',
         'avatar',
-        'is_admin',
     ];
 
     public const DEFAULT_AVATAR = '/img/default-avatar.png';
-
-    public const STATUS_ACTIVE = 'active';
-
-    public const STATUS_INACTIVATED = 'inactivated';
-
-    public const STATUS_FROZEN = 'frozen';
-
-    public const STATUSES = [
-        self::STATUS_INACTIVATED => '未激活',
-        self::STATUS_ACTIVE => '正常',
-        self::STATUS_FROZEN => '已冻结',
-    ];
-
-    // 默认缓存信息
-    public const DEFAULT_CACHE = [];
-
-    // 默认设置信息
-    public const DEFAULT_SETTINGS = [];
 
     /**
      * @var array
      */
     protected $fillable = [
-        'creator_id',
-        'name',
-        'real_name',
+        'nickname',
         'username',
         'avatar',
         'email',
         'phone',
         'gender',
-        'status',
         'birthday',
         'email_verified_at',
         'password',
-        'cache',
-        'extends',
-        'settings',
-        'is_admin',
-        'is_visible',
         'first_active_at',
         'last_active_at',
-        'frozen_at',
+        'banned_reason',
+        'banned_at',
+        'settings',
     ];
 
     /**
@@ -117,26 +82,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'is_visible',
     ];
 
     /**
      * @var array
      */
     protected $casts = [
-        'creator_id' => 'int',
-        'cache' => 'array',
-        'extends' => 'array',
         'settings' => 'array',
         'is_admin' => 'bool',
-        'is_visible' => 'bool',
         'birthday' => 'date',
         'email_verified_at' => 'datetime',
-    ];
-
-    protected $attributes = [
-        'status' => self::STATUS_ACTIVE,
-        'gender' => self::GENDER_UNKNOWN,
+        'banned_at' => 'datetime',
+        'first_active_at' => 'datetime',
+        'last_active_at' => 'datetime',
     ];
 
     protected static function booted()
@@ -144,23 +102,11 @@ class User extends Authenticatable
         static::saving(
             function (User $user) {
                 $user->username = $user->username ?? $user->email;
-                $user->name = $user->name ?? $user->real_name ?? $user->username;
-                $user->first_active_at = ! \is_null($user->getOriginal('first_active_at')) ? $user->first_active_at : null;
+                $user->nickname ??= $user->username;
+                $user->first_active_at = ! is_null($user->getOriginal('first_active_at')) ? $user->first_active_at : null;
 
                 if (Hash::needsRehash($user->password)) {
-                    $user->password = \bcrypt($user->password);
-                }
-
-                if ($user->isDirty('is_admin') && ! \app()->runningInConsole()) {
-                    if (! optional(\auth()->user())->is_admin) {
-                        \abort(403, '非法操作');
-                    }
-                }
-
-                if ($user->isDirty('status') || $user->isDirty('is_admin')) {
-                    if ($user->isDirty('status') && $user->status === self::STATUS_FROZEN) {
-                        $user->frozen_at = now();
-                    }
+                    $user->password = bcrypt($user->password);
                 }
             }
         );
@@ -181,34 +127,9 @@ class User extends Authenticatable
         return $this->attributes['avatar'] ?? self::DEFAULT_AVATAR;
     }
 
-    public function getDisplayStatusAttribute(): string
-    {
-        return self::STATUSES[$this->status ?? self::STATUS_ACTIVE];
-    }
-
     public function isAdmin(): bool
     {
         return $this->is_admin;
-    }
-
-    public function isNotAdmin(): bool
-    {
-        return ! $this->is_admin;
-    }
-
-    public function filterKeyword($query, $keyword)
-    {
-        if (empty($keyword)) {
-            return $query;
-        }
-
-        $keyword = \sprintf('%%%s%%', $keyword);
-
-        return $query->where(
-            function ($q) use ($keyword) {
-                $q->where('name', 'like', $keyword)->orWhere('username', 'like', $keyword);
-            }
-        );
     }
 
     #[ArrayShape(['type' => 'string', 'token' => 'string'])]
@@ -217,7 +138,7 @@ class User extends Authenticatable
     ): array {
         return [
             'type' => 'bearer',
-            'token' => $this->createToken($device)->plainTextToken,
+            'token' => $this->createToken($device ?: 'web')->plainTextToken,
         ];
     }
 
@@ -225,8 +146,7 @@ class User extends Authenticatable
     {
         $this->updateQuietly(
             [
-                'last_active_at' => \now(),
-                'status' => self::STATUS_ACTIVE,
+                'last_active_at' => now(),
             ]
         );
 
@@ -237,25 +157,20 @@ class User extends Authenticatable
     {
         $this->first_active_at || $this->updateQuietly(
             [
-                'first_active_at' => \now(),
-                'status' => self::STATUS_ACTIVE,
+                'first_active_at' => now(),
             ]
         );
 
         return $this;
     }
 
-    public function attributesToArray(): array
-    {
-        if (\auth()->check() && $this->is(auth()->user())) {
-            return parent::attributesToArray();
-        }
-
-        return Arr::only(parent::attributesToArray(), self::SAFE_FIELDS);
-    }
-
     public function getModelFilterClass(): string
     {
         return UserFilter::class;
+    }
+
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
     }
 }
