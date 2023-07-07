@@ -16,8 +16,8 @@ class RegisterTest extends TestCase
             'password' => 'secret',
             'password_confirmation' => 'secret',
         ])
-        ->assertSuccessful()
-        ->assertJsonStructure(['token', 'type']);
+            ->assertSuccessful()
+            ->assertJsonStructure(['token', 'type']);
     }
 
     /** @test */
@@ -31,7 +31,7 @@ class RegisterTest extends TestCase
             'password' => 'secret',
             'password_confirmation' => 'secret',
         ])
-        ->assertStatus(422)
-        ->assertJsonValidationErrors(['username']);
+            ->assertStatus(422)
+            ->assertJsonValidationErrors(['username']);
     }
 }
