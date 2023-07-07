@@ -94,7 +94,7 @@
       "cghooks update"
     ],
     "cghooks": "@php vendor/bin/cghooks",
-    "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php-cs-fixer.php --dry-run --ansi",
+    "check-style": "@php vendor/bin/pint --test",
     "fix-style": "@php vendor/bin/pint",
     "pint": "@php vendor/bin/pint",
     "test": "@php artisan test"
