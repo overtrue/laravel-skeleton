@@ -15,14 +15,17 @@
     "laravel/framework": "^10.0",
     "laravel/sanctum": "^3.0.1",
     "laravel/tinker": "^2.7",
-    "predis/predis": "^2.0.0"
+    "predis/predis": "^2.0.0",
+    "tucker-eric/eloquentfilter": "*"
   },
   "require-dev": {
+    "barryvdh/laravel-ide-helper": "^2.13",
+    "brainmaestro/composer-git-hooks": "dev-master",
     "fakerphp/faker": "^1.9.1",
     "laravel/pint": "^1.1.1",
     "mockery/mockery": "^1.4.4",
-    "nunomaduro/collision": "^6.0",
-    "phpunit/phpunit": "^9.5.10"
+    "nunomaduro/collision": "^7.7",
+    "phpunit/phpunit": "^10.2.3"
   },
   "config": {
     "optimize-autoloader": true,
@@ -35,6 +38,8 @@
   "autoload": {
     "psr-4": {
       "App\\": "app/",
+      "Domain\\": "domain/",
+      "Infrastructure\\": "infrastructure/",
       "Database\\Factories\\": "database/factories/",
       "Database\\Seeders\\": "database/seeders/"
     },
@@ -89,7 +94,7 @@
       "cghooks update"
     ],
     "cghooks": "@php vendor/bin/cghooks",
-    "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php-cs-fixer.php --dry-run --ansi",
+    "check-style": "@php vendor/bin/pint --test",
     "fix-style": "@php vendor/bin/pint",
     "pint": "@php vendor/bin/pint",
     "test": "@php artisan test"
