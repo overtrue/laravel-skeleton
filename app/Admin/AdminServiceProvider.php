@@ -11,7 +11,7 @@ class AdminServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Route::prefix('admin')
-            ->middleware(['api', MustBeAdmin::class])
+            ->middleware(['api', 'auth', MustBeAdmin::class])
             ->as('admin.')
             ->group(function () {
                 Route::get('/users', Endpoints\ListUsers::class)->name('users.index');
