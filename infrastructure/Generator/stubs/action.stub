@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Infrastructure\Actions\Action;
+
+class {{ class }} extends Action
+{
+    public function handle()
+    {
+        //
+    }
+}

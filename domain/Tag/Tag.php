@@ -1,0 +1,36 @@
+<?php
+
+namespace Domains\Tag;
+
+use App\Traits\BelongsToCreator;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Infrastructures\Traits\UseTableNameAsMorphClass;
+
+/**
+ * @property string $creator_id
+ * @property string $name
+ * @property string $color
+ * @property string $icon
+ * @property Model  $taggable
+ */
+class Tag extends Model
+{
+    use HasFactory;
+    use SoftDeletes;
+    use BelongsToCreator;
+    use UseTableNameAsMorphClass;
+
+    protected $fillable = [
+        'creator_id',
+        'name',
+        'color',
+        'icon',
+    ];
+
+    public function taggable()
+    {
+        return $this->morphTo();
+    }
+}

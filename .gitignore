@@ -26,3 +26,4 @@ _ide_helper.php
 cghooks.lock
 hooks
 .env.backup
+.phpunit.cache/

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use Domain\User\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
             'username' => 'admin',
             'name' => '超级管理员',
             'is_admin' => 1,
-            'password' => 'changeThis!!'
+            'password' => 'changeThis!!',
         ]);
     }
 }
