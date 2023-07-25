@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+
+class {{ class }} extends ServiceProvider
+{
+    public function boot(): void
+    {
+        // Route::get('/users', Endpoints\ListUsers::class)->name('users.index');
+    }
+}
