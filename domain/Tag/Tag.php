@@ -1,12 +1,11 @@
 <?php
 
-namespace Domains\Tag;
+namespace Domain\Tag;
 
-use App\Traits\BelongsToCreator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Infrastructures\Traits\UseTableNameAsMorphClass;
+use Infrastructure\Traits\UseTableNameAsMorphClass;
 
 /**
  * @property string $creator_id
@@ -19,7 +18,6 @@ class Tag extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    use BelongsToCreator;
     use UseTableNameAsMorphClass;
 
     protected $fillable = [
