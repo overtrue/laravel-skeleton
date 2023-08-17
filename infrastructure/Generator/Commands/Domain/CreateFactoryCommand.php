@@ -47,7 +47,6 @@ class CreateFactoryCommand extends FactoryMakeCommand
         );
     }
 
-
     /**
      * Guess the model name from the Factory name or return a default model name.
      *

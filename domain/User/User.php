@@ -2,7 +2,6 @@
 
 namespace Domain\User;
 
-use Kra8\Snowflake\HasShortflakePrimary;
 use function bcrypt;
 use Domain\User\Filters\UserFilter;
 use Domain\User\Notifications\ResetPassword;
@@ -15,6 +14,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use function is_null;
 use JetBrains\PhpStorm\ArrayShape;
+use Kra8\Snowflake\HasShortflakePrimary;
 use Laravel\Sanctum\HasApiTokens;
 use function now;
 
