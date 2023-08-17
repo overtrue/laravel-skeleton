@@ -2,6 +2,7 @@
 
 namespace Domain\User;
 
+use Kra8\Snowflake\HasShortflakePrimary;
 use function bcrypt;
 use Domain\User\Filters\UserFilter;
 use Domain\User\Notifications\ResetPassword;
@@ -46,6 +47,7 @@ class User extends Authenticatable
     use SoftDeletes;
     use HasFactory;
     use Filterable;
+    use HasShortflakePrimary;
 
     public const SAFE_FIELDS = [
         'id',

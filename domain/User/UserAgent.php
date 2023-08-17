@@ -5,6 +5,7 @@ namespace Domain\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Infrastructure\Traits\UseTableNameAsMorphClass;
+use Kra8\Snowflake\HasShortflakePrimary;
 
 /**
  * @property string         $user_id
@@ -15,6 +16,7 @@ class UserAgent extends Model
 {
     use SoftDeletes;
     use UseTableNameAsMorphClass;
+    use HasShortflakePrimary;
 
     protected $fillable = ['user_id', 'agent', 'last_used_at'];
 

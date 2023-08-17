@@ -9,7 +9,7 @@ return new class() extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary()->comment('用户ID');
             $table->unsignedInteger('creator_id')->comment('创建者');
             $table->string('name');
             $table->string('color', 10)->nullable();

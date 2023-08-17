@@ -9,7 +9,7 @@ return new class() extends Migration
     public function up()
     {
         Schema::create('user_agents', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('id')->primary()->comment('用户ID');
             $table->unsignedBigInteger('user_id')->index();
             $table->string('agent');
             $table->timestamp('last_used_at');

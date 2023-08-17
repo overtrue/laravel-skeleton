@@ -36,6 +36,7 @@ class GeneratorServiceProvider extends ServiceProvider
             Commands\Domain\CreatePolicyCommand::class,
             Commands\Domain\CreateRuleCommand::class,
             Commands\Domain\CreateScopeCommand::class,
+            Commands\Domain\CreateFactoryCommand::class,
         ]);
     }
 }

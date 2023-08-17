@@ -4,8 +4,10 @@ namespace Domain\Tag;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Infrastructure\Traits\UseTableNameAsMorphClass;
+use Kra8\Snowflake\HasShortflakePrimary;
 
 /**
  * @property string $creator_id
@@ -18,6 +20,7 @@ class Tag extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasShortflakePrimary;
     use UseTableNameAsMorphClass;
 
     protected $fillable = [
@@ -27,7 +30,7 @@ class Tag extends Model
         'icon',
     ];
 
-    public function taggable()
+    public function taggable(): MorphTo
     {
         return $this->morphTo();
     }
