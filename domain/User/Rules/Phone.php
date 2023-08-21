@@ -2,7 +2,6 @@
 
 namespace Domain\User\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Contracts\Validation\ValidationRule;
 
 class Phone implements ValidationRule
