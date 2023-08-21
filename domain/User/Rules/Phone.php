@@ -3,16 +3,14 @@
 namespace Domain\User\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class Phone implements Rule
+class Phone implements ValidationRule
 {
-    public function passes($attribute, $value): bool|int
+    public function validate(string $attribute, mixed $value, \Closure $fail): void
     {
-        return preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|6[6]|7[0135678]|8[0-9])\d{8}$/', $value);
-    }
-
-    public function message(): string
-    {
-        return '手机号码不正确';
+        if (! preg_match('/^1(3[0-9]|4[57]|5[0-35-9]|6[6]|7[0135678]|8[0-9])\d{8}$/', $value)) {
+            $fail('仅支持中国大陆手机号码');
+        }
     }
 }
