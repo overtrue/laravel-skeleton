@@ -20,7 +20,7 @@
     "tucker-eric/eloquentfilter": "*"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.13",
+    "barryvdh/laravel-ide-helper": "^3.0",
     "brainmaestro/composer-git-hooks": "dev-master",
     "fakerphp/faker": "^1.9.1",
     "laravel/pint": "^1.1.1",
